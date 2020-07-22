@@ -14,6 +14,7 @@ class Home extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
+    $data['kegiatan'] = $this->db->get('data_kegiatan')->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);

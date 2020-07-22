@@ -27,6 +27,7 @@ class Kegiatan extends CI_Controller
   {
     //providing data
     $data['title'] = $this->judul->title();
+    $data['jenis'] = $this->db->get('ref_jenis')->result_array();
     // validasi
     $rules = [
       [
@@ -35,9 +36,14 @@ class Kegiatan extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'jenis',
+        'label' => 'Jenis',
+        'rules' => 'required|trim'
+      ],
+      [
         'field' => 'jml_petugas',
         'label' => 'Jumlah Petugas',
-        'rules' => 'required|trim|number'
+        'rules' => 'required|trim|numeric'
       ],
       [
         'field' => 'tgl_mulai',
@@ -48,11 +54,6 @@ class Kegiatan extends CI_Controller
         'field' => 'tgl_selesai',
         'label' => 'Tgl Selesai',
         'rules' => 'required|trim'
-      ],
-      [
-        'field' => 'file',
-        'label' => 'file',
-        'rules' => 'trim'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
@@ -60,7 +61,7 @@ class Kegiatan extends CI_Controller
       //upload file
       $upload_file = $_FILES['file']['name'];
       if ($upload_file) {
-        $config['allowed_types'] = 'jpg|JPEG|png|PNG';
+        $config['allowed_types'] = 'jpg|jpeg|png';
         $config['remove_spaces'] = TRUE;
         $config['max_size']     = '10000';
         $config['encrypt_name']     = TRUE;
@@ -74,13 +75,14 @@ class Kegiatan extends CI_Controller
         } else {
           echo $this->upload->display_errors();
           $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file gagal, mohon sesuaikan format dan ukuran!</div>');
-          redirect('permintaan/upload/' . $laporan_id . '/' . $dokumen_id . '');
+          redirect('kegiatan');
         }
       }
 
       //query
       $data = [
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'jenis' => htmlspecialchars($this->input->post('jenis', true)),
         'jml_petugas' => htmlspecialchars($this->input->post('jml_petugas', true)),
         'tgl_mulai' => strtotime(htmlspecialchars($this->input->post('tgl_mulai', true))),
         'tgl_selesai' => strtotime(htmlspecialchars($this->input->post('tgl_selesai', true))),
@@ -103,6 +105,7 @@ class Kegiatan extends CI_Controller
     if (!isset($id)) redirect('auth/blocked');
     // data
     $data['title'] = $this->judul->title();
+    $data['jenis'] = $this->db->get('ref_jenis')->result_array();
     $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $id])->row_array();
     // validasi
     $rules = [
@@ -110,13 +113,57 @@ class Kegiatan extends CI_Controller
         'field' => 'nama',
         'label' => 'Nama',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'jenis',
+        'label' => 'Jenis',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'jml_petugas',
+        'label' => 'Jumlah Petugas',
+        'rules' => 'required|trim|numeric'
+      ],
+      [
+        'field' => 'tgl_mulai',
+        'label' => 'Tgl Mulai',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_selesai',
+        'label' => 'Tgl Selesai',
+        'rules' => 'required|trim'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
+      //upload file
+      $upload_file = $_FILES['file']['name'];
+      if ($upload_file) {
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['remove_spaces'] = TRUE;
+        $config['max_size']     = '10000';
+        $config['encrypt_name']     = TRUE;
+        $config['upload_path'] = 'assets/img/';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file')) {
+          $new_file = $this->upload->data('file_name');
+          $this->db->set('file', $new_file);
+        } else {
+          echo $this->upload->display_errors();
+          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file gagal, mohon sesuaikan format dan ukuran!</div>');
+          redirect('kegiatan');
+        }
+      }
       //query
       $data = [
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'jenis' => htmlspecialchars($this->input->post('jenis', true)),
+        'jml_petugas' => htmlspecialchars($this->input->post('jml_petugas', true)),
+        'tgl_mulai' => strtotime(htmlspecialchars($this->input->post('tgl_mulai', true))),
+        'tgl_selesai' => strtotime(htmlspecialchars($this->input->post('tgl_selesai', true))),
         'date_created' => time()
       ];
       $this->db->update('data_kegiatan', $data, ['id' => $id]);

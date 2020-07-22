@@ -4,6 +4,9 @@
       <div class="col-lg-8">
         <div class="card">
           <div class="card-header">
+            <div class="card-text">
+              <p><?= $this->session->flashdata('message'); ?></p>
+            </div>
             <a href="<?= base_url('kegiatan/add'); ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
@@ -13,6 +16,10 @@
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Petugas</th>
+                    <th>Mulai</th>
+                    <th>Selesai</th>
+                    <th>File</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -22,6 +29,10 @@
                     <tr>
                       <td><?= $no; ?></td>
                       <td><?= $r['nama']; ?></td>
+                      <td><?= number_format($r['jml_petugas'], 0, ',', '.'); ?></td>
+                      <td><?= date('d-m-Y', $r['tgl_mulai']); ?></td>
+                      <td><?= date('d-m-Y', $r['tgl_selesai']); ?></td>
+                      <td><a href="<?= base_url('assets/img/') . $r['file']; ?>" target="_blank"><i class="fa fa-file-image-o"></i></a></td>
                       <td>
                         <a href="<?= base_url('kegiatan/edit/') . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>
                         <a href="<?= base_url('kegiatan/delete/') . $r['id']; ?>" class="badge badge-danger badge-sm" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?');"><i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i></a>
