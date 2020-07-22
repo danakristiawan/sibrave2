@@ -37,16 +37,14 @@
                 </div>
               </div>
             </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>
+              <a href="<?= base_url('kegiatan/sk-index/') . $kegiatan_id; ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
+            </div>
+          </form>
+        </div>
 
-        </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>
-          <a href="<?= base_url('kegiatan/sk-index/') . $kegiatan_id; ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
-        </div>
-        </form>
       </div>
-
     </div>
-  </div>
   </div>
 </section>
