@@ -1,12 +1,17 @@
-<div class="container mt-4 mb-5">
-  <div class="row">
-    <div class="col">
-      <h1 class="display-1 mb-4 text-center">404</h1>
-      <h3 class="mb-4 text-center">Oops! Halaman tidak ditemukan</h3>
-      <p class="text-center">
+<section class="content">
+  <div class="error-page">
+    <h2 class="headline text-warning"> 404</h2>
+
+    <div class="error-content">
+      <h3><i class="fa fa-warning text-warning"></i> Oops! Halaman tidak ditemukan.</h3>
+
+      <p>
         Kami tidak bisa menemukan halaman yang Anda cari.
-        User Anda belum terdaftar. Hubungi administrator untuk mendapatkan bantuan.
+        User Anda belum terdaftar di modul ini. Hubungi administrator untuk mendapatkan bantuan.
       </p>
+
     </div>
+    <!-- /.error-content -->
   </div>
-</div>
+  <!-- /.error-page -->
+</section>

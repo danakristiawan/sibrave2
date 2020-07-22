@@ -154,9 +154,18 @@ class Auth extends CI_Controller
 
   public function blocked()
   {
+    $data['title'] = $this->judul->title();
+
     $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
     $this->load->view('auth/blocked');
     $this->load->view('template/footer');
+  }
+
+  public function blockedAll()
+  {
+    $this->load->view('auth/blocked-all');
   }
 
   private function _sendEmail($token, $type)
