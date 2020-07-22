@@ -14,7 +14,7 @@ class Jenis extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $data['jenis'] = $this->db->get('data_jenis')->result_array();
+    $data['jenis'] = $this->db->get('ref_jenis')->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
@@ -42,7 +42,7 @@ class Jenis extends CI_Controller
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'date_created' => time()
       ];
-      $this->db->insert('data_jenis', $data);
+      $this->db->insert('ref_jenis', $data);
       redirect('jenis');
     }
     // form
@@ -59,7 +59,7 @@ class Jenis extends CI_Controller
     if (!isset($id)) redirect('auth/blocked');
     // data
     $data['title'] = $this->judul->title();
-    $data['jenis'] = $this->db->get_where('data_jenis', ['id' => $id])->row_array();
+    $data['jenis'] = $this->db->get_where('ref_jenis', ['id' => $id])->row_array();
     // validasi
     $rules = [
       [
@@ -75,7 +75,7 @@ class Jenis extends CI_Controller
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'date_created' => time()
       ];
-      $this->db->update('data_jenis', $data, ['id' => $id]);
+      $this->db->update('ref_jenis', $data, ['id' => $id]);
       redirect('jenis');
     }
     // form
@@ -91,7 +91,7 @@ class Jenis extends CI_Controller
     // cek id
     if (!isset($id)) redirect('auth/blocked');
     // query
-    if ($this->db->delete('data_jenis', ['id' => $id])) {
+    if ($this->db->delete('ref_jenis', ['id' => $id])) {
       redirect('jenis');
     }
   }
