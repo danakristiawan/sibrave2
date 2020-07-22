@@ -29,7 +29,7 @@ class User extends CI_Controller
   {
     //providing data
     $data['title'] = $this->judul->title();
-    $data['petugas'] = $this->db->query("SELECT * FROM ref_petugas")->result_array();
+    $data['user'] = $this->db->query("SELECT * FROM ref_user")->result_array();
 
     //open form
     $this->load->view('template/header');

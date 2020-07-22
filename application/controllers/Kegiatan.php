@@ -57,6 +57,27 @@ class Kegiatan extends CI_Controller
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
+      //upload file
+      $upload_file = $_FILES['file']['name'];
+      if ($upload_file) {
+        $config['allowed_types'] = 'jpg|JPEG|png|PNG';
+        $config['remove_spaces'] = TRUE;
+        $config['max_size']     = '10000';
+        $config['encrypt_name']     = TRUE;
+        $config['upload_path'] = 'assets/img/';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('file')) {
+          $new_file = $this->upload->data('file_name');
+          $this->db->set('file', $new_file);
+        } else {
+          echo $this->upload->display_errors();
+          $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Upload file gagal, mohon sesuaikan format dan ukuran!</div>');
+          redirect('permintaan/upload/' . $laporan_id . '/' . $dokumen_id . '');
+        }
+      }
+
       //query
       $data = [
         'nama' => htmlspecialchars($this->input->post('nama', true)),

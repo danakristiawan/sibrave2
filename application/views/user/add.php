@@ -19,7 +19,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($petugas as $r) : ?>
+                <?php foreach ($user as $r) : ?>
                   <tr>
                     <td><?= $r['nik']; ?></td>
                     <td><?= $r['nama']; ?></td>
