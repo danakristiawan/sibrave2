@@ -10,7 +10,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="">Nama :</label>
-                <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= set_value('nama'); ?>">
+                <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= $bank['nama']; ?>">
                 <div class="invalid-feedback">
                   <?= form_error('nama') ?>
                 </div>
@@ -19,7 +19,7 @@
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>
-              <a href="<?= base_url('jenis'); ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
+              <a href="<?= base_url('bank'); ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
             </div>
           </form>
         </div>

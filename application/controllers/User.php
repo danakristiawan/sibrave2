@@ -29,7 +29,18 @@ class User extends CI_Controller
   {
     //providing data
     $data['title'] = $this->judul->title();
-    $data['user'] = $this->db->query("SELECT * FROM ref_user")->result_array();
+    $data['user'] = [];
+
+    // load user
+    if ($this->input->post('keyword')) {
+      $keyword = htmlspecialchars($this->input->post('keyword', true));
+      $this->db->select('nik,nama');
+      $this->db->from('ref_user');
+      $this->db->like('nama', $keyword);
+      $this->db->or_like('nik', $keyword);
+      $query = $this->db->get();
+      $data['user'] = $query->result_array();
+    }
 
     //open form
     $this->load->view('template/header');

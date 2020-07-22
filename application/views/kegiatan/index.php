@@ -1,13 +1,16 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-lg-10">
+        <?= $this->session->flashdata('message'); ?>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10">
         <div class="card">
           <div class="card-header">
-            <div class="card-text">
-              <p><?= $this->session->flashdata('message'); ?></p>
-            </div>
-            <a href="<?= base_url('kegiatan/add'); ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
+            <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar Kegiatan</span>
+            <a href="<?= base_url('kegiatan/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -16,6 +19,7 @@
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Jenis</th>
                     <th>Petugas</th>
                     <th>Mulai</th>
                     <th>Selesai</th>
@@ -28,7 +32,8 @@
                   foreach ($kegiatan as $r) : $no++; ?>
                     <tr>
                       <td><?= $no; ?></td>
-                      <td><?= $r['nama']; ?></td>
+                      <td><a href="<?= base_url('kegiatan/sk-index/') . $r['id']; ?>"><?= $r['nama']; ?></a></td>
+                      <td><?= $r['jenis']; ?></td>
                       <td><?= number_format($r['jml_petugas'], 0, ',', '.'); ?></td>
                       <td><?= date('d-m-Y', $r['tgl_mulai']); ?></td>
                       <td><?= date('d-m-Y', $r['tgl_selesai']); ?></td>

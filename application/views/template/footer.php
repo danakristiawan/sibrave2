@@ -62,6 +62,28 @@
       }
     });
   });
+
+  $('.form-check-petugas').on('click', function() {
+    let kegiatan_id = $(this).data('kegiatan_id');
+    let sk_id = $(this).data('sk_id');
+    let nik = $(this).data('nik');
+    let nama = $(this).data('nama');
+    let jabatan = $(this).data('jabatan');
+    $.ajax({
+      url: "<?= base_url('kegiatan/addpetugas'); ?>",
+      type: 'post',
+      data: {
+        kegiatan_id: kegiatan_id,
+        sk_id: sk_id,
+        nik: nik,
+        nama: nama,
+        jabatan: jabatan
+      },
+      success: function() {
+        // console.log(data);
+      }
+    });
+  });
 </script>
 </body>
 

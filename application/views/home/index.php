@@ -12,12 +12,10 @@
               <div class="row">
                 <div class="col-7">
                   <h2 class="lead"><b><?= $r['nama']; ?></b></h2>
-                  <ul class="ml-4 mt-4 mb-0 fa-ul text-muted">
-                    <li class="small mb-2"><span class="fa-li"><i class="fa fa-users"></i></span> Jumlah Petugas: <?= number_format($r['jml_petugas'], 0, ',', '.'); ?>
+                  <ul class="ml-4 mt-3 mb-0 fa-ul text-muted">
+                    <li class="small mb-1"><span class="fa-li"><i class="fa fa-calendar-check-o"></i></span> Mulai: <?= tanggal($r['tgl_mulai']); ?>
                     </li>
-                    <li class="small mb-2"><span class="fa-li"><i class="fa fa-calendar"></i></span> Tgl Mulai: <?= date('d-m-Y', $r['tgl_mulai']); ?>
-                    </li>
-                    <li class="small"><span class="fa-li"><i class="fa fa-calendar"></i></span> Tgl Selesai: <?= date('d-m-Y', $r['tgl_selesai']); ?></li>
+                    <li class="small"><span class="fa-li"><i class="fa fa-calendar-times-o"></i></span> Selesai: <?= tanggal($r['tgl_selesai']); ?></li>
                   </ul>
                 </div>
                 <div class="col-5 text-center">

@@ -4,6 +4,7 @@
       <div class="col-lg-8">
         <div class="card">
           <div class="card-header">
+            <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar Pengguna</span>
           </div>
           <div class="card-body">
             <div class="table-responsive">

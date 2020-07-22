@@ -1,10 +1,11 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col">
+      <div class="col-lg-8">
         <div class="card">
           <div class="card-header">
-            <a href="<?= base_url('user/add'); ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
+            <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar User</span>
+            <a href="<?= base_url('user/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
