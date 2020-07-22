@@ -15,7 +15,7 @@
 
         <?php
         $nik = $this->session->userdata('nik');
-        $row = $this->db->query("SELECT nama FROM ref_petugas WHERE nik='$nik'")->row_array();
+        $row = $this->db->query("SELECT nama FROM system_user WHERE nik='$nik'")->row_array();
         $nama = $row['nama'];
         ?>
 
