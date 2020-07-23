@@ -16,6 +16,7 @@
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
+                    <th>Gol</th>
                     <th>Rekening</th>
                     <th>Bank</th>
                     <th>Atasnama</th>
@@ -32,6 +33,7 @@
                       <td><?= $r['nik']; ?></td>
                       <td><?= $r['nama']; ?></td>
                       <td><?= $r['jabatan']; ?></td>
+                      <td><?= $r['gol']; ?></td>
                       <td><?= $r['rekening']; ?></td>
                       <td><?= $r['nama_bank']; ?></td>
                       <td><?= $r['nama_rek']; ?></td>

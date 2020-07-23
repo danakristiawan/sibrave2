@@ -32,7 +32,7 @@
                       <td><?= $r['jabatan']; ?></td>
                       <td>
                         <div class="form-check">
-                          <input class="form-check-petugas" type="checkbox" <?= check_petugas($kegiatan_id, $sk_id, $r['nik']); ?> data-nik="<?= $r['nik']; ?>" data-nama="<?= $r['nama']; ?>" data-jabatan="<?= $r['jabatan']; ?>" data-kegiatan_id="<?= $kegiatan_id; ?>" data-sk_id="<?= $sk_id; ?>">
+                          <input class="form-check-petugas" type="checkbox" <?= check_petugas($kegiatan_id, $sk_id, $r['nik']); ?> data-nik="<?= $r['nik']; ?>" data-nama="<?= $r['nama']; ?>" data-jabatan="<?= $r['jabatan']; ?>" data-gol="<?= $r['gol']; ?>" data-kegiatan_id="<?= $kegiatan_id; ?>" data-sk_id="<?= $sk_id; ?>">
                         </div>
                       </td>
                     </tr>

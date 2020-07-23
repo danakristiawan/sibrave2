@@ -358,7 +358,7 @@ class Kegiatan extends CI_Controller
     // load ref petugas
     if ($this->input->post('keyword')) {
       $keyword = htmlspecialchars($this->input->post('keyword', true));
-      $this->db->select('nik,nama,jabatan');
+      $this->db->select('nik,nama,jabatan,gol');
       $this->db->from('ref_petugas');
       $this->db->like('nama', $keyword);
       $this->db->or_like('nik', $keyword);
@@ -380,6 +380,7 @@ class Kegiatan extends CI_Controller
     $nik = $this->input->post('nik');
     $nama = $this->input->post('nama');
     $jabatan = $this->input->post('jabatan');
+    $gol = $this->input->post('gol');
 
     $data = [
       'kegiatan_id' => $kegiatan_id,
@@ -387,6 +388,7 @@ class Kegiatan extends CI_Controller
       'nik' => $nik,
       'nama' => $nama,
       'jabatan' => $jabatan,
+      'gol' => $gol,
       'date_created' => time()
     ];
     $cek = [
@@ -414,5 +416,129 @@ class Kegiatan extends CI_Controller
     if ($this->db->delete('data_petugas', ['id' => $id])) {
       redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
     }
+  }
+
+  public function spk_edit($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    //providing data
+    $data['kegiatan_id'] = $kegiatan_id;
+    $data['sk_id'] = $sk_id;
+    $data['title'] = $this->judul->title();
+    $data['spk'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
+    // query
+    // validasi
+    $rules = [
+      [
+        'field' => 'no_spk',
+        'label' => 'Nomor SPK',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_spk',
+        'label' => 'Tanggal SPK',
+        'rules' => 'required|trim'
+      ]
+    ];
+    $validation = $this->form_validation->set_rules($rules);
+    if ($validation->run()) {
+      //query
+      $data = [
+        'no_spk' => htmlspecialchars($this->input->post('no_spk', true)),
+        'tgl_spk' => strtotime(htmlspecialchars($this->input->post('tgl_spk', true)))
+      ];
+      $this->db->update('data_petugas', $data, ['id' => $id]);
+      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
+    }
+    // form
+    $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
+    $this->load->view('spk/edit', $data);
+    $this->load->view('template/footer');
+  }
+
+  public function st_edit($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    //providing data
+    $data['kegiatan_id'] = $kegiatan_id;
+    $data['sk_id'] = $sk_id;
+    $data['title'] = $this->judul->title();
+    $data['st'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
+    // query
+    // validasi
+    $rules = [
+      [
+        'field' => 'no_st',
+        'label' => 'Nomor ST',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_st',
+        'label' => 'Tanggal ST',
+        'rules' => 'required|trim'
+      ]
+    ];
+    $validation = $this->form_validation->set_rules($rules);
+    if ($validation->run()) {
+      //query
+      $data = [
+        'no_st' => htmlspecialchars($this->input->post('no_st', true)),
+        'tgl_st' => strtotime(htmlspecialchars($this->input->post('tgl_st', true)))
+      ];
+      $this->db->update('data_petugas', $data, ['id' => $id]);
+      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
+    }
+    // form
+    $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
+    $this->load->view('st/edit', $data);
+    $this->load->view('template/footer');
+  }
+
+  public function spk_cetak($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    // query
+    $data['petugas'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
+    $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    //cetak
+    ob_start();
+    $this->load->view('laporan/spk', $data);
+    $html = ob_get_clean();
+    $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
+    $html2pdf->pdf->SetTitle('SPK');
+    $html2pdf->writeHTML($html);
+    $html2pdf->output('spk.pdf');
+  }
+
+  public function st_cetak($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    // query
+    $data['petugas'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
+    $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    //cetak
+    ob_start();
+    $this->load->view('laporan/st', $data);
+    $html = ob_get_clean();
+    $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
+    $html2pdf->pdf->SetTitle('ST');
+    $html2pdf->writeHTML($html);
+    $html2pdf->output('st.pdf');
   }
 }

@@ -69,12 +69,21 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label for="">NPWP :</label>
                     <input type="text" name="npwp" class="form-control <?= form_error('npwp') ? 'is-invalid' : '' ?>" value="<?= $petugas['npwp']; ?>">
                     <div class="invalid-feedback">
                       <?= form_error('npwp') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1">
+                  <div class="form-group">
+                    <label for="">Gol :</label>
+                    <input type="text" name="gol" class="form-control <?= form_error('gol') ? 'is-invalid' : '' ?>" value="<?= $petugas['gol']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('gol') ?>
                     </div>
                   </div>
                 </div>

@@ -69,6 +69,7 @@
     let nik = $(this).data('nik');
     let nama = $(this).data('nama');
     let jabatan = $(this).data('jabatan');
+    let gol = $(this).data('gol');
     $.ajax({
       url: "<?= base_url('kegiatan/addpetugas'); ?>",
       type: 'post',
@@ -77,7 +78,8 @@
         sk_id: sk_id,
         nik: nik,
         nama: nama,
-        jabatan: jabatan
+        jabatan: jabatan,
+        gol: gol
       },
       success: function() {
         // console.log(data);

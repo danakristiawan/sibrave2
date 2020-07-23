@@ -253,7 +253,7 @@
         <tr>
             <td class="isi_1">KETIGA</td>
             <td class="isi_2">:</td>
-            <td class="isi_3">Kepada <?= $sk['nama']; ?> dapat diberikan uang harian sesuai tugasnya.</td>
+            <td class="isi_3">Kepada <?= $sk['nama']; ?> dapat diberikan uang harian atau honorarium sesuai tugasnya.</td>
         </tr>
     </table>
     <table class="isi">

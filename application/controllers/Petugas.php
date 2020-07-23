@@ -47,6 +47,11 @@ class Petugas extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'gol',
+        'label' => 'Gol',
+        'rules' => 'required|trim'
+      ],
+      [
         'field' => 'rekening',
         'label' => 'Rekening',
         'rules' => 'required|trim'
@@ -79,6 +84,7 @@ class Petugas extends CI_Controller
         'nik' => htmlspecialchars($this->input->post('nik', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
+        'gol' => htmlspecialchars($this->input->post('gol', true)),
         'rekening' => htmlspecialchars($this->input->post('rekening', true)),
         'nama_bank' => htmlspecialchars($this->input->post('nama_bank', true)),
         'nama_rek' => htmlspecialchars($this->input->post('nama_rek', true)),
@@ -124,6 +130,11 @@ class Petugas extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'gol',
+        'label' => 'Gol',
+        'rules' => 'required|trim'
+      ],
+      [
         'field' => 'rekening',
         'label' => 'Rekening',
         'rules' => 'required|trim'
@@ -156,6 +167,7 @@ class Petugas extends CI_Controller
         'nik' => htmlspecialchars($this->input->post('nik', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
+        'gol' => htmlspecialchars($this->input->post('gol', true)),
         'rekening' => htmlspecialchars($this->input->post('rekening', true)),
         'nama_bank' => htmlspecialchars($this->input->post('nama_bank', true)),
         'nama_rek' => htmlspecialchars($this->input->post('nama_rek', true)),
