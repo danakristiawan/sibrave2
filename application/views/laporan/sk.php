@@ -60,6 +60,21 @@
         text-align: top;
     }
 
+    table.tabel {
+        width: 100%;
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 0mm;
+        border-spacing: 0px;
+        margin-top: 5px;
+        align-content: center;
+        align-items: center;
+        align-self: center;
+        box-align: center;
+        text-align: center;
+        height: 10px;
+    }
+
     td.isi_1 {
         text-align: left;
         width: 15%;
@@ -94,34 +109,64 @@
         font-size: 11px;
         vertical-align: top;
     }
+
+    td.tabel_1 {
+        text-align: center;
+        width: 10%;
+        font-size: 11px;
+        vertical-align: middle;
+        border: 1px solid black;
+        height: 15px;
+    }
+
+    td.tabel_2 {
+        text-align: left;
+        width: 40%;
+        font-size: 11px;
+        vertical-align: middle;
+        border: 1px solid black;
+        height: 15px;
+        padding-left: 5px;
+    }
+
+    td.tabel_3 {
+        text-align: left;
+        width: 50%;
+        font-size: 11px;
+        vertical-align: middle;
+        border: 1px solid black;
+        height: 15px;
+        padding-left: 5px;
+    }
 </style>
 
-<page backtop="30mm" backbottom="0mm" backleft="20mm" backright="20mm">
+<page backtop="0mm" backbottom="0mm" backleft="20mm" backright="20mm">
     <page_header>
-        <table class="page_header" cellspacing="0px" cellpadding="0px">
-            <tr>
-                <td class="logo">
-                    <img src="<?= base_url(); ?>assets/img/logobps.png" alt="logo bps" width="70">
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>BADAN PUSAT STATISTIK</b>
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>KOTA ADMINISTRASI JAKARTA SELATAN</b>
-                </td>
-            </tr>
-        </table>
+
     </page_header>
     <page_footer>
         <table class="page_footer">
 
         </table>
     </page_footer>
-    <table class="header">
+    <table class="page_header" cellspacing="0px" cellpadding="0px">
+        <tr>
+            <td class="logo">
+                <img src="<?= base_url(); ?>assets/img/logobps.png" alt="logo bps" width="70">
+            </td>
+        </tr>
+        <tr>
+            <td class="logo">
+                <b>BADAN PUSAT STATISTIK</b>
+            </td>
+        </tr>
+        <tr>
+            <td class="logo">
+                <b>KOTA ADMINISTRASI JAKARTA SELATAN</b>
+            </td>
+        </tr>
+    </table>
+    <table class="header" style="margin-top: 15px;">
         <tr>
             <td class="head"><b>KEPUTUSAN</b></td>
         </tr>
@@ -271,6 +316,78 @@
         </tr>
     </table>
     <table class="isi">
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:15%; text-align:left;font-size:11px;">Ditetapkan di</td>
+            <td style="width:5%; text-align:center;font-size:11px;">:</td>
+            <td style="width:15%; text-align:left;font-size:11px;">JAKARTA</td>
+        </tr>
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:15%; text-align:left;font-size:11px;">Pada tanggal</td>
+            <td style="width:5%; text-align:center;font-size:11px;">:</td>
+            <td style="width:15%; text-align:left;font-size:11px;"><?= tanggal($sk['tanggal']); ?></td>
+        </tr>
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">KEPALA BADAN PUSAT STATISTIK</td>
+        </tr>
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">KOTA JAKARTA SELATAN</td>
+        </tr>
+    </table>
+    <table class="isi" style="margin-top: 40px;">
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b>SYARIFUDDIN NAWIE, S.Si, ME</b></td>
+        </tr>
+        <tr>
+            <td style="width:65%; text-align:left;font-size:11px;"></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">NIP. 19620809 198601 1 001</td>
+        </tr>
+    </table>
+
+</page>
+<page backtop="10mm" backbottom="0mm" backleft="20mm" backright="20mm">
+    <table class="header" style="margin-top: 10px;">
+        <tr>
+            <td style="width:100%; text-align:left;font-size:11px;">Lampiran Keputusan Kepala Badan Pusat Statistik Kota Administrasi Jakarta Selatan</td>
+        </tr>
+    </table>
+    <table class="isi">
+        <tr>
+            <td class="isi_1">Tentang</td>
+            <td class="isi_2">:</td>
+            <td class="isi_3"><?= $sk['nama']; ?></td>
+        </tr>
+        <tr>
+            <td class="isi_1">Nomor</td>
+            <td class="isi_2">:</td>
+            <td class="isi_3"><?= $sk['nomor']; ?></td>
+        </tr>
+        <tr>
+            <td class="isi_1">Tanggal</td>
+            <td class="isi_2">:</td>
+            <td class="isi_3"><?= tanggal($sk['tanggal']); ?></td>
+        </tr>
+    </table>
+    <table class="tabel">
+        <tr>
+            <td class="tabel_1">No</td>
+            <td class="tabel_2">Nama</td>
+            <td class="tabel_3">Jabatan</td>
+        </tr>
+        <?php $no = 0;
+        foreach ($petugas as $r) : $no++; ?>
+            <tr>
+                <td class="tabel_1"><?= $no; ?></td>
+                <td class="tabel_2"><?= $r['nama']; ?></td>
+                <td class="tabel_3"><?= $r['jabatan']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+    <table class="isi" style="margin-top: 20px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
             <td style="width:15%; text-align:left;font-size:11px;">Ditetapkan di</td>

@@ -96,25 +96,8 @@
     }
 </style>
 
-<page backtop="30mm" backbottom="0mm" backleft="20mm" backright="20mm">
+<page backtop="40mm" backbottom="0mm" backleft="20mm" backright="20mm">
     <page_header>
-        <table class="page_header" cellspacing="0px" cellpadding="0px">
-            <tr>
-                <td class="logo">
-                    <img src="<?= base_url(); ?>assets/img/logobps.png" alt="logo bps" width="70">
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>BADAN PUSAT STATISTIK</b>
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>KOTA ADMINISTRASI JAKARTA SELATAN</b>
-                </td>
-            </tr>
-        </table>
     </page_header>
     <page_footer>
         <table class="page_footer">
@@ -129,19 +112,99 @@
             <td class="head">Nomor : <?= $petugas['no_st']; ?></td>
         </tr>
     </table>
-
-    <table class="isi">
+    <table class="isi" style="margin-top: 25px;">
         <tr>
-            <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:15%; text-align:left;font-size:11px;">Ditetapkan di</td>
-            <td style="width:5%; text-align:center;font-size:11px;">:</td>
-            <td style="width:15%; text-align:left;font-size:11px;">JAKARTA</td>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Menimbang</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Bahwa dalam rangka Kegiatan <?= $kegiatan['nama']; ?> maka dipandang perlu melakukan <?= $kegiatan['jenis']; ?> kegiatan tersebut;</td>
         </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Mengingat</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">1.	Undang-undang No.16 Tahun 1997 tentang Statistik;</td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">2.	Peraturan Pemerintah No.51 Tahun 1999 tentang Peyelenggaraan Statistik;</td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">3.	Peraturan Pemerintah Nomor 45 Tahun 2013, tentang Tata Cara Pelaksanaan Anggaran Pendapatan dan Belanja Negara;</td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">4.	Peraturan Presiden Republik Indonesia Nomor 86 Tahun 2007 tentang Badan Pusat Statistik;</td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">5.	Peraturan Kepala Badan Pusat Statistik Nomor 7 Tahun 2008 tentang Organisasi dan Tata Kerja Badan Pusat Statistik;</td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;"></td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">6.	Keputusan Kepala Badan Pusat Statistik No.121 Tahun 2001, tentang Organisasi dan Tata Kerja Badan Pusat Statistik di daerah;</td>
+        </tr>
+        </table>
+    <table class="header" style="margin-top: 15px;">
+        <tr>
+            <td class="head"><b>MEMBERI TUGAS:</b></td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 10px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Kepada</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;"><?= $petugas['nama']; ?></td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">NIK</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;"><?= $petugas['nik']; ?></td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Jabatan</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;"><?= $petugas['jabatan']; ?></td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Untuk</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Melaksanakan kegiatan <?= $kegiatan['jenis']; ?> dalam rangka <?= $kegiatan['nama']; ?></td>
+        </tr>
+        </table>
+    <table class="isi" style="margin-top: 5px;">
+        <tr>
+        <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Waktu Pelaksanaan</td>
+        <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
+        <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;"><?= tanggal($kegiatan['tgl_mulai']); ?> - <?= tanggal($kegiatan['tgl_selesai']); ?></td>
+        </tr>
+        </table>
+    <table class="isi"style="margin-top: 25px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:15%; text-align:left;font-size:11px;">Pada tanggal</td>
-            <td style="width:5%; text-align:center;font-size:11px;">:</td>
-            <td style="width:15%; text-align:left;font-size:11px;"><?= tanggal($petugas['tgl_st']); ?></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">Jakarta,<?= tanggal($petugas['tgl_st']); ?></td>
         </tr>
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
@@ -152,7 +215,7 @@
             <td style="width:35%; text-align:center;font-size:11px;" colspan="3">KOTA JAKARTA SELATAN</td>
         </tr>
     </table>
-    <table class="isi" style="margin-top: 40px;">
+    <table class="isi" style="margin-top: 60px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
             <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b>SYARIFUDDIN NAWIE, S.Si, ME</b></td>

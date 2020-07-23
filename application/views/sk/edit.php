@@ -36,6 +36,14 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="">Kode Akun :</label>
+                <select name="akun_id" class="form-control">
+                  <?php foreach ($akun as $s) : ?>
+                    <option value="<?= $s['id']; ?>" <?= $s['id'] == $sk['akun_id'] ? 'selected' : ''; ?>><?= $s['kd_program'] . '.' . $s['kd_kegiatan'] . '.' . $s['kd_output'] . '.' . $s['kd_komponen'] . '.' . $s['kd_akun']; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
 
             </div>
             <div class="card-footer">

@@ -1,15 +1,15 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col">
         <?= $this->session->flashdata('message'); ?>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col">
         <div class="card">
           <div class="card-header">
-            <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar Kegiatan</span>
+            <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;Daftar Kegiatan</span>
             <a href="<?= base_url('kegiatan/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
@@ -23,6 +23,7 @@
                     <th>Petugas</th>
                     <th>Mulai</th>
                     <th>Selesai</th>
+                    <th>Penanggungjawab</th>
                     <th>File</th>
                     <th>Aksi</th>
                   </tr>
@@ -37,6 +38,7 @@
                       <td><?= number_format($r['jml_petugas'], 0, ',', '.'); ?></td>
                       <td><?= date('d-m-Y', $r['tgl_mulai']); ?></td>
                       <td><?= date('d-m-Y', $r['tgl_selesai']); ?></td>
+                      <td><?= $r['nm_pj']; ?></td>
                       <td><a href="<?= base_url('assets/img/') . $r['file']; ?>" target="_blank"><i class="fa fa-file-image-o"></i></a></td>
                       <td>
                         <a href="<?= base_url('kegiatan/edit/') . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>

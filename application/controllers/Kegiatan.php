@@ -14,7 +14,8 @@ class Kegiatan extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $data['kegiatan'] = $this->db->get('data_kegiatan')->result_array();
+    $query = "SELECT a.*,b.nama AS nm_pj FROM data_kegiatan a LEFT JOIN ref_jabatan b ON a.jabatan_id=b.id";
+    $data['kegiatan'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
@@ -28,6 +29,7 @@ class Kegiatan extends CI_Controller
     //providing data
     $data['title'] = $this->judul->title();
     $data['jenis'] = $this->db->get('ref_jenis')->result_array();
+    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
     // validasi
     $rules = [
       [
@@ -86,6 +88,7 @@ class Kegiatan extends CI_Controller
         'jml_petugas' => htmlspecialchars($this->input->post('jml_petugas', true)),
         'tgl_mulai' => strtotime(htmlspecialchars($this->input->post('tgl_mulai', true))),
         'tgl_selesai' => strtotime(htmlspecialchars($this->input->post('tgl_selesai', true))),
+        'jabatan_id' => htmlspecialchars($this->input->post('jabatan_id', true)),
         'date_created' => time()
       ];
       $this->db->insert('data_kegiatan', $data);
@@ -106,6 +109,7 @@ class Kegiatan extends CI_Controller
     // data
     $data['title'] = $this->judul->title();
     $data['jenis'] = $this->db->get('ref_jenis')->result_array();
+    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
     $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $id])->row_array();
     // validasi
     $rules = [
@@ -164,6 +168,7 @@ class Kegiatan extends CI_Controller
         'jml_petugas' => htmlspecialchars($this->input->post('jml_petugas', true)),
         'tgl_mulai' => strtotime(htmlspecialchars($this->input->post('tgl_mulai', true))),
         'tgl_selesai' => strtotime(htmlspecialchars($this->input->post('tgl_selesai', true))),
+        'jabatan_id' => htmlspecialchars($this->input->post('jabatan_id', true)),
         'date_created' => time()
       ];
       $this->db->update('data_kegiatan', $data, ['id' => $id]);
@@ -195,7 +200,7 @@ class Kegiatan extends CI_Controller
     // data
     $data['kegiatan_id'] = $kegiatan_id;
     $data['title'] = $this->judul->title();
-    $data['sk'] = $this->db->get_where('data_sk', ['kegiatan_id' => $kegiatan_id])->result_array();
+    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan,b.kd_output,b.kd_komponen,b.kd_akun FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id")->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
@@ -211,6 +216,7 @@ class Kegiatan extends CI_Controller
     //providing data
     $data['kegiatan_id'] = $kegiatan_id;
     $data['title'] = $this->judul->title();
+    $data['akun'] = $this->db->get('ref_akun')->result_array();
     // validasi
     $rules = [
       [
@@ -237,6 +243,7 @@ class Kegiatan extends CI_Controller
         'nomor' => htmlspecialchars($this->input->post('nomor', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'tanggal' => strtotime(htmlspecialchars($this->input->post('tanggal', true))),
+        'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
         'date_created' => time()
       ];
       $this->db->insert('data_sk', $data);
@@ -258,6 +265,7 @@ class Kegiatan extends CI_Controller
     // data
     $data['kegiatan_id'] = $kegiatan_id;
     $data['title'] = $this->judul->title();
+    $data['akun'] = $this->db->get('ref_akun')->result_array();
     $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
     // validasi
     $rules = [
@@ -285,6 +293,7 @@ class Kegiatan extends CI_Controller
         'nomor' => htmlspecialchars($this->input->post('nomor', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'tanggal' => strtotime(htmlspecialchars($this->input->post('tanggal', true))),
+        'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
         'date_created' => time()
       ];
       $this->db->update('data_sk', $data, ['id' => $id]);
@@ -316,6 +325,7 @@ class Kegiatan extends CI_Controller
     if (!isset($id)) redirect('auth/blocked');
     // query
     $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
+    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $id])->result_array();
     //cetak
     ob_start();
     $this->load->view('laporan/sk', $data);
@@ -358,7 +368,7 @@ class Kegiatan extends CI_Controller
     // load ref petugas
     if ($this->input->post('keyword')) {
       $keyword = htmlspecialchars($this->input->post('keyword', true));
-      $this->db->select('nik,nama,jabatan,gol');
+      $this->db->select('nik,nama,jabatan,gol,alamat');
       $this->db->from('ref_petugas');
       $this->db->like('nama', $keyword);
       $this->db->or_like('nik', $keyword);
@@ -381,6 +391,7 @@ class Kegiatan extends CI_Controller
     $nama = $this->input->post('nama');
     $jabatan = $this->input->post('jabatan');
     $gol = $this->input->post('gol');
+    $alamat = $this->input->post('alamat');
 
     $data = [
       'kegiatan_id' => $kegiatan_id,
@@ -389,6 +400,7 @@ class Kegiatan extends CI_Controller
       'nama' => $nama,
       'jabatan' => $jabatan,
       'gol' => $gol,
+      'alamat' => $alamat,
       'date_created' => time()
     ];
     $cek = [
@@ -501,6 +513,53 @@ class Kegiatan extends CI_Controller
     $this->load->view('template/sidebar', $data);
     $this->load->view('template/topbar', $data);
     $this->load->view('st/edit', $data);
+    $this->load->view('template/footer');
+  }
+
+  public function target_edit($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    //providing data
+    $data['kegiatan_id'] = $kegiatan_id;
+    $data['sk_id'] = $sk_id;
+    $data['title'] = $this->judul->title();
+    $data['target'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
+    // query
+    // validasi
+    $rules = [
+      [
+        'field' => 'jml',
+        'label' => 'Target',
+        'rules' => 'required|numeric'
+      ],
+      [
+        'field' => 'satuan',
+        'label' => 'Satuan Biaya',
+        'rules' => 'required|numeric'
+      ]
+    ];
+    $validation = $this->form_validation->set_rules($rules);
+    if ($validation->run()) {
+      //query
+      $jml = htmlspecialchars($this->input->post('jml', true));
+      $satuan = htmlspecialchars($this->input->post('satuan', true));
+      $bruto = $jml * $satuan;
+      $data = [
+        'jml' => $jml,
+        'satuan' => $satuan,
+        'bruto' => $bruto
+      ];
+      $this->db->update('data_petugas', $data, ['id' => $id]);
+      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
+    }
+    // form
+    $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
+    $this->load->view('target/edit', $data);
     $this->load->view('template/footer');
   }
 

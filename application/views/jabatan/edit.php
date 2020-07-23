@@ -9,10 +9,37 @@
             </div>
             <div class="card-body">
               <div class="form-group">
+                <label for="">Kode :</label>
+                <input type="text" name="kode" class="form-control <?= form_error('kode') ? 'is-invalid' : '' ?>" value="<?= $jabatan['kode']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('kode') ?>
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="">Nama :</label>
                 <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= $jabatan['nama']; ?>">
                 <div class="invalid-feedback">
                   <?= form_error('nama') ?>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="">Nama Pegawai :</label>
+                    <input type="text" name="nama_peg" class="form-control <?= form_error('nama_peg') ? 'is-invalid' : '' ?>" value="<?= $jabatan['nama_peg']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('nama_peg') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="">NIP Pegawai :</label>
+                    <input type="text" name="nip_peg" class="form-control <?= form_error('nip_peg') ? 'is-invalid' : '' ?>" value="<?= $jabatan['nip_peg']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('nip_peg') ?>
+                    </div>
+                  </div>
                 </div>
               </div>
 

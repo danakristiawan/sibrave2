@@ -85,3 +85,45 @@ function tanggal($tgl)
   $nama_bulan = $daftar_bulan[$bulan];
   return date('d', $tgl) . ' ' . $nama_bulan . ' ' . date('Y', $tgl);
 }
+
+function jam($tgl)
+{
+  return date('H:i', $tgl);
+}
+
+function hari($tgl)
+{
+  $hari = date('l', $tgl);
+  $daftar_hari = [
+    'Sunday' => 'Minggu',
+    'Monday' => 'Senin',
+    'Tuesday' => 'Selasa',
+    'Wednesday' => 'Rabu',
+    'Thursday' => 'Kamis',
+    'Friday' => 'Jumat',
+    'Saturday' => 'Sabtu'
+  ];
+  $nama_hari = $daftar_hari[$hari];
+  return $nama_hari;
+}
+
+function bulan($tgl)
+{
+  $bulan = date('m', $tgl);
+  $daftar_bulan = [
+    '01' => 'Januari',
+    '02' => 'Februari',
+    '03' => 'Maret',
+    '04' => 'April',
+    '05' => 'Mei',
+    '06' => 'Juni',
+    '07' => 'Juli',
+    '08' => 'Agustus',
+    '09' => 'September',
+    '10' => 'Oktober',
+    '11' => 'November',
+    '12' => 'Desember',
+  ];
+  $nama_bulan = $daftar_bulan[$bulan];
+  return $nama_bulan;
+}

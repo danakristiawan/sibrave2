@@ -4,7 +4,7 @@
       <div class="col-lg-10">
         <div class="card">
           <div class="card-header">
-            <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar Surat Keputusan</span>
+            <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('kegiatan'); ?>">Daftar Kegiatan</a> / Daftar Surat Keputusan</span>
             <a href="<?= base_url('kegiatan/sk-add/') . $kegiatan_id; ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
@@ -14,8 +14,9 @@
                   <tr>
                     <th>No</th>
                     <th>Nomor</th>
-                    <th>Uraian</th>
                     <th>Tanggal</th>
+                    <th>Uraian</th>
+                    <th>Akun</th>
                     <th>File</th>
                     <th>Aksi</th>
                   </tr>
@@ -26,11 +27,11 @@
                     <tr>
                       <td><?= $no; ?></td>
                       <td><a href="<?= base_url('kegiatan/petugas-index/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
-                      <td><?= $r['nama']; ?></td>
                       <td><?= date('d-m-Y', $r['tanggal']); ?></td>
+                      <td><?= $r['nama']; ?></td>
+                      <td><?= $r['kd_program'] . '.' . $r['kd_kegiatan'] . '.' . $r['kd_output'] . '.' . $r['kd_komponen'] . '.' . $r['kd_akun']; ?></td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-cetak/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="SK"><i class="fa fa-file-pdf-o"></i></a>
-                        <a href="<?= base_url('kegiatan/spj-cetak/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="SPJ"><i class="fa fa-file-pdf-o ml-2"></i></a>
                       </td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-edit/') . $kegiatan_id . '/' . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>

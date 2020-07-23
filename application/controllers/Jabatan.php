@@ -30,16 +30,34 @@ class Jabatan extends CI_Controller
     // validasi
     $rules = [
       [
+        'field' => 'kode',
+        'label' => 'Kode',
+        'rules' => 'required|trim|exact_length[2]'
+      ],
+      [
         'field' => 'nama',
         'label' => 'Nama',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'nama_peg',
+        'label' => 'Nama Pegawai',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'nip_peg',
+        'label' => 'NIP Pegawai',
+        'rules' => 'required|trim|exact_length[18]'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
       //query
       $data = [
+        'kode' => htmlspecialchars($this->input->post('kode', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'nama_peg' => htmlspecialchars($this->input->post('nama_peg', true)),
+        'nip_peg' => htmlspecialchars($this->input->post('nip_peg', true)),
         'date_created' => time()
       ];
       $this->db->insert('ref_jabatan', $data);
@@ -63,16 +81,34 @@ class Jabatan extends CI_Controller
     // validasi
     $rules = [
       [
+        'field' => 'kode',
+        'label' => 'Kode',
+        'rules' => 'required|trim|exact_length[2]'
+      ],
+      [
         'field' => 'nama',
         'label' => 'Nama',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'nama_peg',
+        'label' => 'Nama Pegawai',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'nip_peg',
+        'label' => 'NIP Pegawai',
+        'rules' => 'required|trim|exact_length[18]'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
       //query
       $data = [
+        'kode' => htmlspecialchars($this->input->post('kode', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'nama_peg' => htmlspecialchars($this->input->post('nama_peg', true)),
+        'nip_peg' => htmlspecialchars($this->input->post('nip_peg', true)),
         'date_created' => time()
       ];
       $this->db->update('ref_jabatan', $data, ['id' => $id]);

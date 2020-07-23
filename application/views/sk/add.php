@@ -36,6 +36,14 @@
                   </div>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="">Kode Akun :</label>
+                <select name="akun_id" class="form-control">
+                  <?php foreach ($akun as $s) : ?>
+                    <option value="<?= $s['id']; ?>"><?= $s['kd_program'] . '.' . $s['kd_kegiatan'] . '.' . $s['kd_output'] . '.' . $s['kd_komponen'] . '.' . $s['kd_akun']; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>

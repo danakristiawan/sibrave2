@@ -21,6 +21,8 @@
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
+                    <th>Gol</th>
+                    <th>Alamat</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -30,9 +32,11 @@
                       <td><?= $r['nik']; ?></td>
                       <td><?= $r['nama']; ?></td>
                       <td><?= $r['jabatan']; ?></td>
+                      <td><?= $r['gol']; ?></td>
+                      <td><?= $r['alamat']; ?></td>
                       <td>
                         <div class="form-check">
-                          <input class="form-check-petugas" type="checkbox" <?= check_petugas($kegiatan_id, $sk_id, $r['nik']); ?> data-nik="<?= $r['nik']; ?>" data-nama="<?= $r['nama']; ?>" data-jabatan="<?= $r['jabatan']; ?>" data-gol="<?= $r['gol']; ?>" data-kegiatan_id="<?= $kegiatan_id; ?>" data-sk_id="<?= $sk_id; ?>">
+                          <input class="form-check-petugas" type="checkbox" <?= check_petugas($kegiatan_id, $sk_id, $r['nik']); ?> data-nik="<?= $r['nik']; ?>" data-nama="<?= $r['nama']; ?>" data-jabatan="<?= $r['jabatan']; ?>" data-gol="<?= $r['gol']; ?>" data-alamat="<?= $r['alamat']; ?>" data-kegiatan_id="<?= $kegiatan_id; ?>" data-sk_id="<?= $sk_id; ?>">
                         </div>
                       </td>
                     </tr>
