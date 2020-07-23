@@ -309,6 +309,23 @@ class Kegiatan extends CI_Controller
     }
   }
 
+  public function sk_cetak($kegiatan_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    // query
+    $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
+    //cetak
+    ob_start();
+    $this->load->view('laporan/sk', $data);
+    $html = ob_get_clean();
+    $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
+    $html2pdf->pdf->SetTitle('SK');
+    $html2pdf->writeHTML($html);
+    $html2pdf->output('sk.pdf');
+  }
+
   //petugas
   public function petugas_index($kegiatan_id = null, $sk_id = null)
   {
