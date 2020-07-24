@@ -30,7 +30,6 @@
             <p>
               Kami tidak bisa menemukan halaman yang Anda cari.
               User Anda belum terdaftar di modul ini. Hubungi administrator untuk mendapatkan bantuan.
-              atau <a href="<?= base_url(); ?>../internal">kembali ke halaman internal</a>.
             </p>
           </div>
         </div>
