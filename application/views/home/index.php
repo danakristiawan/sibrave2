@@ -25,7 +25,7 @@
             </div>
             <div class="card-footer">
               <div class="text-right">
-                <a href="#" class="btn btn-outline-info">
+                <a href="<?= base_url('home/detail/') . $r['id']; ?>" class="btn btn-outline-info">
                   <i class="fa fa-search"></i> Informasi Detail
                 </a>
               </div>
