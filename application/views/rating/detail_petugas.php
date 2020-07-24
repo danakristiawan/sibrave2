@@ -29,6 +29,23 @@
                       <td class="text-right"><?= number_format($r['jml'], 0, ',', '.'); ?></td>
                       <td class="text-right"><?= number_format($r['capaian'], 0, ',', '.'); ?></td>
                       <td>
+                        <div class="review-block-rate">
+                          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                          </button>
+                          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                          </button>
+                          <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                          </button>
+                          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                          </button>
+                          <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   <?php endforeach; ?>
