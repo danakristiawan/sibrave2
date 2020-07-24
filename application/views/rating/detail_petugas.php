@@ -21,7 +21,8 @@
                 </thead>
                 <tbody>
                   <?php $no = 0;
-                  foreach ($petugas as $r) : $no++; ?>
+                  foreach ($petugas as $r) : $no++;
+                    $petugas_id = $r['id']; ?>
                     <tr>
                       <td><?= $no; ?></td>
                       <td><?= $r['nik']; ?></td>
@@ -32,101 +33,101 @@
                         <div class="review-block-rate">
                           <?php $rating = $r['rating']; ?>
                           <?php if ($rating == 5) : ?>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php elseif ($rating == 4) : ?>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php elseif ($rating == 3) : ?>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php elseif ($rating == 2) : ?>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php elseif ($rating == 1) : ?>
-                            <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-warning btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php else : ?>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/1'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/2'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/3'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/4'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
-                            <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                            </a>
+                            <a href="<?= base_url('rating/edit-rating/') . $kegiatan_id . '/' . $sk_id . '/' . $petugas_id . '/5'; ?>" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
                               <span class="fa fa-star" aria-hidden="true"></span>
-                            </button>
+                            </a>
                           <?php endif; ?>
                         </div>
                       </td>

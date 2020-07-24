@@ -48,7 +48,7 @@ class Rating extends CI_Controller
     $data['title'] = $this->judul->title();
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
-    $query = "SELECT a.nik,a.nama,a.jml,a.capaian,b.rating FROM data_petugas a LEFT JOIN data_rating b ON a.id=b.petugas_id WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$sk_id'";
+    $query = "SELECT a.id,a.nik,a.nama,a.jml,a.capaian,b.rating FROM data_petugas a LEFT JOIN data_rating b ON a.id=b.petugas_id WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$sk_id'";
     $data['petugas'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
@@ -58,40 +58,33 @@ class Rating extends CI_Controller
     $this->load->view('template/footer');
   }
 
-  public function spj_cetak($kegiatan_id = null, $sk_id = null)
+  public function edit_rating($kegiatan_id = null, $sk_id = null, $petugas_id = null, $rating = null)
   {
-    // cek id
+    // check id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($petugas_id)) redirect('auth/blocked');
+    if (!isset($rating)) redirect('auth/blocked');
     // query
-    $data['sk'] = $this->db->query("SELECT a.*,b.* FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.kegiatan_id='$kegiatan_id' AND a.id='$sk_id'")->row_array();
-    $data['spj'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
-    //cetak
-    ob_start();
-    $this->load->view('laporan/spj', $data);
-    $html = ob_get_clean();
-    $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
-    $html2pdf->pdf->SetTitle('SPJ');
-    $html2pdf->writeHTML($html);
-    $html2pdf->output('spj.pdf');
-  }
+    $cek = [
+      'petugas_id' => $petugas_id
+    ];
+    $data = [
+      'petugas_id' => $petugas_id,
+      'rating' => $rating,
+      'date_created' => time()
+    ];
+    $data2 = [
+      'rating' => $rating,
+      'date_created' => time()
+    ];
+    $result = $this->db->get_where('data_rating', $cek);
 
-  public function bast_cetak($kegiatan_id = null, $sk_id = null, $nik = null)
-  {
-    // cek id
-    if (!isset($kegiatan_id)) redirect('auth/blocked');
-    if (!isset($sk_id)) redirect('auth/blocked');
-    if (!isset($nik)) redirect('auth/blocked');
-    // query
-    $data['sk'] = $this->db->query("SELECT a.*,b.* FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.kegiatan_id='$kegiatan_id' AND a.id='$sk_id'")->row_array();
-    $data['spj'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'nik' => $nik])->result_array();
-    //cetak
-    ob_start();
-    $this->load->view('laporan/bast', $data);
-    $html = ob_get_clean();
-    $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
-    $html2pdf->pdf->SetTitle('BAST');
-    $html2pdf->writeHTML($html);
-    $html2pdf->output('bast.pdf');
+    if ($result->num_rows() < 1) {
+      $this->db->insert('data_rating', $data);
+    } else {
+      $this->db->update('data_rating', $data2, $cek);
+    }
+    redirect('rating/detail-petugas/' . $kegiatan_id . '/' . $sk_id . '');
   }
 }
