@@ -419,4 +419,5 @@
             <td style="width:35%; text-align:center;font-size:11px;" colspan="3">NIP. 19620809 198601 1 001</td>
         </tr>
     </table>
+
 </page>

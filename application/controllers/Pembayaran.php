@@ -65,6 +65,8 @@ class Pembayaran extends CI_Controller
     // query
     $data['sk'] = $this->db->query("SELECT a.*,b.* FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.kegiatan_id='$kegiatan_id' AND a.id='$sk_id'")->row_array();
     $data['spj'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
+    $data['kegiatan'] = $this->db->query("SELECT a.nama,b.nama_peg,b.nip_peg FROM data_kegiatan a LEFT JOIN ref_jabatan b ON a.jabatan_id=b.id WHERE a.id='$kegiatan_id'")->row_array();
+    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
     //cetak
     ob_start();
     $this->load->view('laporan/spj', $data);
@@ -82,8 +84,9 @@ class Pembayaran extends CI_Controller
     if (!isset($sk_id)) redirect('auth/blocked');
     if (!isset($nik)) redirect('auth/blocked');
     // query
-    $data['sk'] = $this->db->query("SELECT a.*,b.* FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.kegiatan_id='$kegiatan_id' AND a.id='$sk_id'")->row_array();
-    $data['spj'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'nik' => $nik])->result_array();
+    $data['kegiatan'] = $this->db->query("SELECT a.nama,b.nama_peg,b.nip_peg FROM data_kegiatan a LEFT JOIN ref_jabatan b ON a.jabatan_id=b.id WHERE a.id='$kegiatan_id'")->row_array();
+    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'nik' => $nik])->row_array();
+    $data['sk'] = $this->db->get_where('data_sk', ['kegiatan_id' => $kegiatan_id, 'id' => $sk_id])->row_array();
     //cetak
     ob_start();
     $this->load->view('laporan/bast', $data);
