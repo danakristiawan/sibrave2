@@ -212,26 +212,26 @@
             <td style="width:33%; text-align:center;font-size:11px;">Jakarta,</td>
         </tr>
         <tr>
-            <td style="width:34%; text-align:center;font-size:11px;">Subject Matter</td>
-            <td style="width:33%; text-align:center;font-size:11px;">Pejabat Pembuat Komitmen</td>
+            <td style="width:33%; text-align:center;font-size:11px;">Subject Matter</td>
+            <td style="width:34%; text-align:center;font-size:11px;">Pejabat Pembuat Komitmen</td>
             <td style="width:33%; text-align:center;font-size:11px;">Yang Menyerahkan</td>
         </tr>
         <tr>
-            <td style="width:34%; text-align:center;font-size:11px;"></td>
-            <td style="width:33%; text-align:center;font-size:11px;">BPS Kota Jakarta Selatan</td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;">BPS Kota Jakarta Selatan</td>
             <td style="width:33%; text-align:center;font-size:11px;"></td>
         </tr>
     </table>
     <table class="isi" style="margin-top:30px;">
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;"><?= $kegiatan['nama_peg']; ?></td>
-            <td style="width:33%; text-align:center;font-size:11px;">Helmy Azhary, S.Si, MM</td>
-            <td style="width:34%; text-align:center;font-size:11px;"><?= $petugas['nama']; ?></td>
+            <td style="width:34%; text-align:center;font-size:11px;">Helmy Azhary, S.Si, MM</td>
+            <td style="width:33%; text-align:center;font-size:11px;"><?= $petugas['nama']; ?></td>
         </tr>
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;">NIP. <?= $kegiatan['nip_peg']; ?></td>
-            <td style="width:33%; text-align:center;font-size:11px;">NIP. 19741031 199612 1 001</td>
-            <td style="width:34%; text-align:center;font-size:11px;">NIK. <?= $petugas['nik']; ?></td>
+            <td style="width:34%; text-align:center;font-size:11px;">NIP. 19741031 199612 1 001</td>
+            <td style="width:33%; text-align:center;font-size:11px;">NIK. <?= $petugas['nik']; ?></td>
         </tr>
     </table>
 </page>
