@@ -13,17 +13,17 @@
                 <tr>
                   <td>Surat Keputusan</td>
                   <td>Nomor : <?= $kegiatan['no_sk']; ?></td>
-                  <td>Tanggal : <?= tanggal($kegiatan['tgl_sk']); ?></td>
+                  <td>Tanggal : <?= $kegiatan['tgl_sk'] == null ? '' : tanggal($kegiatan['tgl_sk']); ?></td>
                 </tr>
                 <tr>
                   <td>Surat Perintah Kerja (SPK)</td>
                   <td>Nomor : <?= $kegiatan['no_spk']; ?></td>
-                  <td>Tanggal : <?= tanggal($kegiatan['tgl_spk']); ?></td>
+                  <td>Tanggal : <?= $kegiatan['tgl_spk'] == null ? '' : tanggal($kegiatan['tgl_spk']); ?></td>
                 </tr>
                 <tr>
                   <td>Surat Tugas</td>
                   <td>Nomor : <?= $kegiatan['no_st']; ?></td>
-                  <td>Tanggal : <?= tanggal($kegiatan['tgl_st']); ?></td>
+                  <td>Tanggal : <?= $kegiatan['tgl_st'] == null ? '' : tanggal($kegiatan['tgl_st']); ?></td>
                 </tr>
               </table>
             </div>
