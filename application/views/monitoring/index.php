@@ -7,7 +7,7 @@
     <hr>
     <div class="row">
       <?php foreach ($kegiatan as $r) : ?>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
           <div class="card">
             <div class="card-header bg-info-gradient">
               <?= $r['jenis']; ?>
@@ -46,6 +46,7 @@
                     <td><?= number_format($r['jml_petugas'], 0, ',', '.'); ?> <a href="<?= base_url('monitoring/detail/') . $r['id']; ?>" class="badge badge-secondary badge-sm ml-2"><i class="fa fa-search" data-toggle="tooltip" data-placement="bottom" title="Detail"></i></i></a></td>
                   </tr>
                 </table>
+
               </div>
             </div>
           </div>

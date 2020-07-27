@@ -31,11 +31,15 @@ class Monitoring extends CI_Controller
     // data
     $data['title'] = $this->judul->title();
     $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id])->result_array();
+    $query = "SELECT a.id, SUM(b.jml) AS target, SUM(b.capaian) AS capaian FROM data_kegiatan a LEFT JOIN data_petugas b ON a.id=b.kegiatan_id WHERE a.id='$kegiatan_id' GROUP BY a.id ";
+    $data['monitor'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
     $this->load->view('template/topbar', $data);
     $this->load->view('monitoring/detail', $data);
-    $this->load->view('template/footer');
+    // $this->load->view('template/footer');
+    $this->load->view('template/footer_min');
+    $this->load->view('monitoring/chart', $data);
   }
 }
