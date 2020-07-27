@@ -6,12 +6,11 @@
     var barChartCanvas = $('#barChart').get(0).getContext('2d')
     var barChart = new Chart(barChartCanvas)
     var areaChartData = {
-      <?php
-      $nik = $this->session->userdata('nik');
-      $data = $this->db->query("SELECT a.no_spk FROM data_petugas a LEFT JOIN data_kegiatan b ON a.kegiatan_id=b.id WHERE a.nik='$nik'")->result_array();
-      ?>
       labels: [
-        <?php foreach ($data as $r) : ?> '<?= $r['no_spk']; ?>',
+        <?php
+        $nik = $this->session->userdata('nik');
+        $data = $this->db->query("SELECT a.no_spk FROM data_petugas a LEFT JOIN data_kegiatan b ON a.kegiatan_id=b.id WHERE a.nik='$nik'")->result_array();
+        foreach ($data as $r) : ?> '<?= $r['no_spk']; ?>',
         <?php endforeach; ?>
       ],
       datasets: [{
@@ -22,12 +21,10 @@
         pointStrokeColor: '#c1c7d1',
         pointHighlightFill: '#fff',
         pointHighlightStroke: 'rgba(220,220,220,1)',
-        <?php
-        $nik = $this->session->userdata('nik');
-        $data2 = $this->db->query("SELECT jml,capaian FROM data_petugas WHERE nik='$nik'")->result_array();
-        ?>
         data: [
-          <?php foreach ($data2 as $s) : ?> '<?= $s['jml']; ?>',
+          <?php
+          $data2 = $this->db->query("SELECT jml,capaian FROM data_petugas WHERE nik='$nik'")->result_array();
+          foreach ($data2 as $s) : ?> '<?= $s['jml']; ?>',
           <?php endforeach; ?>
         ]
       }, {

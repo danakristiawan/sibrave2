@@ -200,7 +200,7 @@ class Kegiatan extends CI_Controller
     // data
     $data['kegiatan_id'] = $kegiatan_id;
     $data['title'] = $this->judul->title();
-    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan,b.kd_output,b.kd_komponen,b.kd_akun FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id")->result_array();
+    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan,b.kd_output,b.kd_komponen,b.kd_akun FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.kegiatan_id='$kegiatan_id'")->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
