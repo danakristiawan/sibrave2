@@ -50,7 +50,7 @@
       <div class="row mt-3 mb-5">
         <div class="col">
           <a href="<?= base_url('auth'); ?>" class="btn btn-outline-primary">Masuk Aplikasi</a>
-          <a href="#" class="btn btn-outline-success ml-2">Petunjuk Pengguna</a>
+          <a href="<?= base_url(); ?>assets/files/petunjuk-pengguna-sibrave.pdf" class="btn btn-outline-success ml-2" target="_blank">Petunjuk Pengguna</a>
         </div>
       </div>
     </div>
