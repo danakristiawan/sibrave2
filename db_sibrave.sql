@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 23 Jul 2020 pada 20.24
+-- Waktu pembuatan: 03 Agu 2020 pada 18.53
 -- Versi server: 5.7.26
 -- Versi PHP: 7.3.8
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sibrave`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `business`
+--
+
+CREATE TABLE `business` (
+  `id` int(11) NOT NULL,
+  `business_name` varchar(300) NOT NULL,
+  `address` text NOT NULL,
+  `product` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `business`
+--
+
+INSERT INTO `business` (`id`, `business_name`, `address`, `product`) VALUES
+(1, 'Fog Harbor Fish House', 'Fisherman\'s Wharf, North Beach/Telegraph Hill\r\nPier 39\r\nSan Francisco, CA 94133\r\nPhone number (415) 421-2442', 'Seafood, Bars'),
+(2, 'The House', 'North Beach/Telegraph Hill\r\n1230 Grant Ave\r\nSan Francisco, CA 94133\r\nPhone number (415) 986-8612', 'Asian Fusion'),
+(3, 'Barnzu', 'Tenderloin\r\n711 Geary St\r\nSan Francisco, CA 94109\r\nPhone number (415) 525-4985', 'Korean, Tapas Bars'),
+(4, 'Brenda French Soul Food', 'Tenderloin\r\n652 Polk St\r\nSan Francisco, CA 94102\r\nPhone number (415) 345-8100', 'Breakfast & Brunch, French, Soul Food'),
+(5, 'The Salzburg', 'Russian Hill, North Beach/Telegraph Hill\r\n663 Union St\r\nSan Francisco, CA 94133', 'Austrian'),
+(6, 'Marufuku Ramen', 'Lower Pacific Heights, Japantown\r\n1581 Webster St\r\nSan Francisco, CA 94115\r\nPhone number (415) 872-9786', 'Seafood, Seafood Markets, Live/Raw Food');
 
 -- --------------------------------------------------------
 
@@ -135,6 +160,27 @@ INSERT INTO `data_petugas` (`id`, `kegiatan_id`, `sk_id`, `nik`, `nama`, `jabata
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `data_rating`
+--
+
+CREATE TABLE `data_rating` (
+  `id` int(11) NOT NULL,
+  `petugas_id` int(11) DEFAULT NULL,
+  `rating` int(1) DEFAULT NULL,
+  `date_created` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `data_rating`
+--
+
+INSERT INTO `data_rating` (`id`, `petugas_id`, `rating`, `date_created`) VALUES
+(4, 14, 4, 1595859351),
+(5, 16, 3, 1595564491);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `data_sk`
 --
 
@@ -154,9 +200,52 @@ CREATE TABLE `data_sk` (
 
 INSERT INTO `data_sk` (`id`, `kegiatan_id`, `nomor`, `nama`, `tanggal`, `akun_id`, `date_created`) VALUES
 (4, 5, '001/31.716/SK/JANUARI/2020', 'Petugas Konsultasi Teknis Seksi IPDS', 1580403600, 4, 1595529404),
-(6, 5, '124/SK/2020', 'Petugas survei', 1593536400, NULL, 1595529337),
-(7, 6, '1414/saga/adfaa', 'SK sdga', 1596128400, NULL, 1595518683),
-(8, 5, '222//22/222', 'dgs hf sfgsgss', 1596042000, 4, 1595529426);
+(7, 6, '1414/saga/adfaa', 'SK sdga', 1596128400, NULL, 1595518683);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `rating`
+--
+
+CREATE TABLE `rating` (
+  `rating_id` int(11) NOT NULL,
+  `business_id` int(11) NOT NULL,
+  `rating` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `rating`
+--
+
+INSERT INTO `rating` (`rating_id`, `business_id`, `rating`) VALUES
+(1, 6, 3),
+(2, 6, 5),
+(3, 6, 3),
+(4, 5, 3),
+(5, 5, 2),
+(6, 5, 5),
+(7, 5, 5),
+(8, 5, 5),
+(9, 5, 1),
+(10, 3, 5),
+(11, 4, 3),
+(12, 4, 5),
+(13, 4, 3),
+(14, 4, 5),
+(15, 1, 3),
+(16, 1, 1),
+(17, 1, 2),
+(18, 1, 5),
+(19, 1, 5),
+(20, 2, 4),
+(21, 6, 5),
+(22, 6, 5),
+(23, 5, 1),
+(24, 5, 1),
+(25, 1, 5),
+(26, 6, 5),
+(27, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -425,7 +514,9 @@ INSERT INTO `system_sub_menu` (`id`, `menu_id`, `name`, `url`, `icon`) VALUES
 (10, 2, 'Capaian', 'capaian', 'nav-icon fa fa-archive'),
 (11, 2, 'Persetujuan', 'persetujuan', 'nav-icon fa fa-database'),
 (12, 3, 'Jenis', 'jenis', 'nav-icon fa fa-tags'),
-(13, 2, 'Pembayaran', 'pembayaran', 'nav-icon fa fa-tags');
+(13, 2, 'Pembayaran', 'pembayaran', 'nav-icon fa fa-tags'),
+(14, 2, 'Penilaian', 'rating', 'nav-icon fa fa-tags'),
+(15, 1, 'Monitoring', 'monitoring', 'nav-icon fa fa-tags');
 
 -- --------------------------------------------------------
 
@@ -505,6 +596,12 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 
 --
+-- Indeks untuk tabel `business`
+--
+ALTER TABLE `business`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `data_capaian`
 --
 ALTER TABLE `data_capaian`
@@ -529,10 +626,22 @@ ALTER TABLE `data_petugas`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `data_rating`
+--
+ALTER TABLE `data_rating`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `data_sk`
 --
 ALTER TABLE `data_sk`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `rating`
+--
+ALTER TABLE `rating`
+  ADD PRIMARY KEY (`rating_id`);
 
 --
 -- Indeks untuk tabel `ref_akun`
@@ -617,6 +726,12 @@ ALTER TABLE `system_user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `business`
+--
+ALTER TABLE `business`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT untuk tabel `data_capaian`
 --
 ALTER TABLE `data_capaian`
@@ -641,10 +756,22 @@ ALTER TABLE `data_petugas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
+-- AUTO_INCREMENT untuk tabel `data_rating`
+--
+ALTER TABLE `data_rating`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `data_sk`
 --
 ALTER TABLE `data_sk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `rating`
+--
+ALTER TABLE `rating`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `ref_akun`
@@ -710,7 +837,7 @@ ALTER TABLE `system_role`
 -- AUTO_INCREMENT untuk tabel `system_sub_menu`
 --
 ALTER TABLE `system_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `system_sub_sub_menu`
