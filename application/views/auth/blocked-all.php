@@ -32,6 +32,8 @@
               Kami tidak bisa menemukan halaman yang Anda cari.
               User Anda belum terdaftar di modul ini. Hubungi administrator untuk mendapatkan bantuan.
             </p>
+            <p>
+              <a class="btn btn-primary" href="<?= base_url('auth/logout'); ?>" onclick="return confirm('Apakah Anda yakin akan keluar dari aplikasi ini?')"><i class="fa fa-power-off"></i> &nbsp;Logout</a></p>
           </div>
         </div>
       </div>
