@@ -58,7 +58,8 @@ class User extends CI_Controller
     $data = [
       'nik' => $nik,
       'nama' => $nama,
-      'role_id' => 2
+      'role_id' => 2,
+      'kdbps' => '0000'
     ];
 
     $result = $this->db->get_where('system_user', $data);
