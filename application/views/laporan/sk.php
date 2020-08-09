@@ -340,7 +340,7 @@
     <table class="isi" style="margin-top: 40px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= $jabatan['nama_peg']; ?></b></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= strtoupper($jabatan['nama_peg']); ?></b></td>
         </tr>
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
@@ -412,7 +412,7 @@
     <table class="isi" style="margin-top: 40px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= $jabatan['nama_peg']; ?></b></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= strtoupper($jabatan['nama_peg']); ?></b></td>
         </tr>
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
