@@ -14,7 +14,8 @@ class Kegiatan extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $query = "SELECT a.*,b.nama AS nm_pj FROM data_kegiatan a LEFT JOIN ref_jabatan b ON a.jabatan_id=b.id";
+    $kdbps = getBps()['kdbps'];
+    $query = "SELECT a.*,b.nama AS nm_pj FROM data_kegiatan a LEFT JOIN ref_jabatan b ON a.jabatan_id=b.id WHERE a.kdbps='$kdbps'";
     $data['kegiatan'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
@@ -28,8 +29,9 @@ class Kegiatan extends CI_Controller
   {
     //providing data
     $data['title'] = $this->judul->title();
+    $kdbps = getBps()['kdbps'];
     $data['jenis'] = $this->db->get('ref_jenis')->result_array();
-    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps])->result_array();
     // validasi
     $rules = [
       [
@@ -83,6 +85,7 @@ class Kegiatan extends CI_Controller
 
       //query
       $data = [
+        'kdbps' => getBps()['kdbps'],
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'jenis' => htmlspecialchars($this->input->post('jenis', true)),
         'jml_petugas' => htmlspecialchars($this->input->post('jml_petugas', true)),
@@ -233,6 +236,16 @@ class Kegiatan extends CI_Controller
         'field' => 'tanggal',
         'label' => 'Tanggal',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'no_dipa',
+        'label' => 'No DIPA',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'rate',
+        'label' => 'Rate',
+        'rules' => 'required|trim|numeric'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
@@ -243,7 +256,9 @@ class Kegiatan extends CI_Controller
         'nomor' => htmlspecialchars($this->input->post('nomor', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'tanggal' => strtotime(htmlspecialchars($this->input->post('tanggal', true))),
+        'no_dipa' => htmlspecialchars($this->input->post('no_dipa', true)),
         'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
+        'rate' => htmlspecialchars($this->input->post('rate', true)),
         'date_created' => time()
       ];
       $this->db->insert('data_sk', $data);
@@ -283,6 +298,16 @@ class Kegiatan extends CI_Controller
         'field' => 'tanggal',
         'label' => 'Tanggal',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'no_dipa',
+        'label' => 'No DIPA',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'rate',
+        'label' => 'Rate',
+        'rules' => 'required|trim|numeric'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
@@ -293,7 +318,9 @@ class Kegiatan extends CI_Controller
         'nomor' => htmlspecialchars($this->input->post('nomor', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'tanggal' => strtotime(htmlspecialchars($this->input->post('tanggal', true))),
+        'no_dipa' => htmlspecialchars($this->input->post('no_dipa', true)),
         'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
+        'rate' => htmlspecialchars($this->input->post('rate', true)),
         'date_created' => time()
       ];
       $this->db->update('data_sk', $data, ['id' => $id]);
@@ -326,6 +353,9 @@ class Kegiatan extends CI_Controller
     // query
     $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
     $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $id])->result_array();
+    $kdbps = getBps()['kdbps'];
+    $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps, 'kode' => '01'])->row_array();
     //cetak
     ob_start();
     $this->load->view('laporan/sk', $data);

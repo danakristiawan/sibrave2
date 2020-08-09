@@ -37,12 +37,26 @@
                 </div>
               </div>
               <div class="form-group">
+                <label for="">Nomor DIPA :</label>
+                <input type="text" name="no_dipa" class="form-control <?= form_error('no_dipa') ? 'is-invalid' : '' ?>" value="<?= $sk['no_dipa']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('no_dipa') ?>
+                </div>
+              </div>
+              <div class="form-group">
                 <label for="">Kode Akun :</label>
                 <select name="akun_id" class="form-control">
                   <?php foreach ($akun as $s) : ?>
                     <option value="<?= $s['id']; ?>" <?= $s['id'] == $sk['akun_id'] ? 'selected' : ''; ?>><?= $s['kd_program'] . '.' . $s['kd_kegiatan'] . '.' . $s['kd_output'] . '.' . $s['kd_komponen'] . '.' . $s['kd_akun']; ?></option>
                   <?php endforeach; ?>
                 </select>
+              </div>
+              <div class="form-group">
+                <label for="">Rate :</label>
+                <input type="text" name="rate" class="form-control <?= form_error('rate') ? 'is-invalid' : '' ?>" value="<?= $sk['rate']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('rate') ?>
+                </div>
               </div>
 
             </div>

@@ -1,7 +1,7 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col">
         <div class="card">
           <div class="card-header">
             <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('kegiatan'); ?>">Daftar Kegiatan</a> / Daftar Surat Keputusan</span>
@@ -16,7 +16,9 @@
                     <th>Nomor</th>
                     <th>Tanggal</th>
                     <th>Uraian</th>
+                    <th>No DIPA</th>
                     <th>Akun</th>
+                    <th>Rate</th>
                     <th>File</th>
                     <th>Aksi</th>
                   </tr>
@@ -29,7 +31,9 @@
                       <td><a href="<?= base_url('kegiatan/petugas-index/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
                       <td><?= date('d-m-Y', $r['tanggal']); ?></td>
                       <td><?= $r['nama']; ?></td>
+                      <td><?= $r['no_dipa']; ?></td>
                       <td><?= $r['kd_program'] . '.' . $r['kd_kegiatan'] . '.' . $r['kd_output'] . '.' . $r['kd_komponen'] . '.' . $r['kd_akun']; ?></td>
+                      <td><?= number_format($r['rate'], 0, ',', '.'); ?></td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-cetak/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="SK"><i class="fa fa-file-pdf-o"></i></a>
                       </td>
