@@ -14,7 +14,8 @@ class Akun extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $data['akun'] = $this->db->get('ref_akun')->result_array();
+    $kdbps = getBps()['kdbps'];
+    $data['akun'] = $this->db->get_where('ref_akun', ['kdbps' => $kdbps])->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
@@ -84,6 +85,7 @@ class Akun extends CI_Controller
     if ($validation->run()) {
       //query
       $data = [
+        'kdbps' => getBps()['kdbps'],
         'kd_program' => htmlspecialchars($this->input->post('kd_program', true)),
         'nm_program' => htmlspecialchars($this->input->post('nm_program', true)),
         'kd_kegiatan' => htmlspecialchars($this->input->post('kd_kegiatan', true)),

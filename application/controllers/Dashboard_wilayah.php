@@ -14,9 +14,7 @@ class Dashboard_wilayah extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $nik = $this->session->userdata('nik');
-    $data['user'] = $this->db->get_where('system_user', ['nik' => $nik])->row_array();
-    $kdbps = $data['user']['kdbps'];
+    $kdbps = getBps()['kdbps'];
     $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
     // form
     $this->load->view('template/header');
