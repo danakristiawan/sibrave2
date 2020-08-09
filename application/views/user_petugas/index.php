@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header">
             <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar User</span>
-            <a href="<?= base_url('user/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
+            <a href="<?= base_url('user-petugas/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -16,7 +16,6 @@
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Level</th>
-                    <th>Kode BPS</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -28,10 +27,9 @@
                       <td><?= $u['nik']; ?></td>
                       <td><?= $u['nama']; ?></td>
                       <td><?= $u['name']; ?></td>
-                      <td><?= $u['kdbps'] . ' - ' . $u['nmbps']; ?></td>
                       <td>
-                        <a href="<?= base_url('user/edit/') . $u['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>
-                        <a href="<?= base_url('user/delete/') . $u['id']; ?>" class="badge badge-danger badge-sm" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?');"><i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i></a>
+                        <!-- <a href="<?= base_url('user-petugas/edit/') . $u['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a> -->
+                        <a href="<?= base_url('user-petugas/delete/') . $u['id']; ?>" class="badge badge-danger badge-sm" onclick="return confirm('Apakah Anda yakin akan menghapus data ini?');"><i class="fa fa-trash" data-toggle="tooltip" data-placement="bottom" title="Hapus"></i></a>
                       </td>
                     </tr>
                   <?php endforeach; ?>

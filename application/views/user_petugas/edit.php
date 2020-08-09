@@ -30,14 +30,6 @@
                 <?php endforeach; ?>
               </select>
             </div>
-            <div class="form-group">
-              <label for="">Kode BPS :</label>
-              <select name="kdbps" class="form-control">
-                <?php foreach ($bps as $r) : ?>
-                  <option value="<?= $r['kode']; ?>" <?= $r['kode'] == $user['kdbps'] ? 'selected' : ''; ?>><?= $r['nama']; ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
           </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>

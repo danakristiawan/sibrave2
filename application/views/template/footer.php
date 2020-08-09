@@ -63,6 +63,22 @@
     });
   });
 
+  $('.form-check-input-2').on('click', function() {
+    const nik = $(this).data('nik');
+    const nama = $(this).data('nama');
+    $.ajax({
+      url: "<?= base_url('user-petugas/adduser'); ?>",
+      type: 'post',
+      data: {
+        nik: nik,
+        nama: nama
+      },
+      success: function() {
+        // document.location.href = "<?= base_url('daftar/add/'); ?>" + tahunId;
+      }
+    });
+  });
+
   $('.form-check-petugas').on('click', function() {
     let kegiatan_id = $(this).data('kegiatan_id');
     let sk_id = $(this).data('sk_id');
