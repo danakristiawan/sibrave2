@@ -8,20 +8,27 @@
 
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label for="">Kode :</label>
-                <input type="text" name="kode" class="form-control <?= form_error('kode') ? 'is-invalid' : '' ?>" value="<?= set_value('kode'); ?>">
-                <div class="invalid-feedback">
-                  <?= form_error('kode') ?>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Kode Jabatan :</label>
+                    <input type="text" name="kode" class="form-control <?= form_error('kode') ? 'is-invalid' : '' ?>" value="<?= set_value('kode'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('kode') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                  <div class="form-group">
+                    <label for="">Nama Jabatan :</label>
+                    <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= set_value('nama'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('nama') ?>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="">Nama :</label>
-                <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= set_value('nama'); ?>">
-                <div class="invalid-feedback">
-                  <?= form_error('nama') ?>
-                </div>
-              </div>
+
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group">

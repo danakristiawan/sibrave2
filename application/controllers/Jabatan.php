@@ -14,7 +14,8 @@ class Jabatan extends CI_Controller
   {
     // data
     $data['title'] = $this->judul->title();
-    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
+    $kdbps = getBps()['kdbps'];
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps])->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
@@ -54,6 +55,7 @@ class Jabatan extends CI_Controller
     if ($validation->run()) {
       //query
       $data = [
+        'kdbps' => getBps()['kdbps'],
         'kode' => htmlspecialchars($this->input->post('kode', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
         'nama_peg' => htmlspecialchars($this->input->post('nama_peg', true)),

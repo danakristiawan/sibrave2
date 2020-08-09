@@ -1,7 +1,7 @@
 <section>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-10">
+      <div class="col">
         <div class="card">
           <form action="" method="post" autocomplete="off">
             <div class="card-header">
@@ -11,16 +11,16 @@
               <div class="row">
                 <div class="col-lg-3">
                   <div class="form-group">
-                    <label for="">NIK :</label>
+                    <label for="">NIK Petugas :</label>
                     <input type="text" name="nik" class="form-control <?= form_error('nik') ? 'is-invalid' : '' ?>" value="<?= set_value('nik'); ?>">
                     <div class="invalid-feedback">
                       <?= form_error('nik') ?>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
-                    <label for="">Nama :</label>
+                    <label for="">Nama Petugas :</label>
                     <input type="text" name="nama" class="form-control <?= form_error('nama') ? 'is-invalid' : '' ?>" value="<?= set_value('nama'); ?>">
                     <div class="invalid-feedback">
                       <?= form_error('nama') ?>
@@ -29,9 +29,75 @@
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
-                    <label for="">Jabatan :</label>
-                    <select name="jabatan" class="form-control">
-                      <?php foreach ($jabatan as $r) : ?>
+                    <label for="">Tempat Lahir :</label>
+                    <input type="text" name="tempat_lhr" class="form-control <?= form_error('tempat_lhr') ? 'is-invalid' : '' ?>" value="<?= set_value('tempat_lhr'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('tempat_lhr') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="tgl_lhr">Tgl Lahir:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                      </div>
+                      <input class="form-control <?= form_error('tgl_lhr') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_lhr" value="<?= set_value('tgl_lhr'); ?>">
+                      <div class="invalid-feedback">
+                        <?= form_error('tgl_lhr') ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">Jenis Kelamin :</label>
+                    <select name="jenis_kel" class="form-control">
+                      <?php foreach ($kelamin as $r) : ?>
+                        <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Pekerjaan :</label>
+                    <input type="text" name="pekerjaan" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" value="<?= set_value('pekerjaan'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('pekerjaan') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">Agama :</label>
+                    <select name="agama" class="form-control">
+                      <?php foreach ($agama as $r) : ?>
+                        <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">Status :</label>
+                    <select name="status_kawin" class="form-control">
+                      <?php foreach ($kawin as $r) : ?>
+                        <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Pendidikan :</label>
+                    <select name="pendidikan" class="form-control">
+                      <?php foreach ($pendidikan as $r) : ?>
                         <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
                       <?php endforeach; ?>
                     </select>
@@ -40,6 +106,102 @@
               </div>
               <div class="row">
                 <div class="col-lg-4">
+                  <div class="form-group">
+                    <label for="">No Handphone :</label>
+                    <input type="text" name="nohp" class="form-control <?= form_error('nohp') ? 'is-invalid' : '' ?>" value="<?= set_value('nohp'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('nohp') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label for="">Email :</label>
+                    <input type="email" name="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" value="<?= set_value('email'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('email') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label for="">NPWP :</label>
+                    <input type="text" name="npwp" class="form-control <?= form_error('npwp') ? 'is-invalid' : '' ?>" value="<?= set_value('npwp'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('npwp') ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="form-group">
+                    <label for="">Jalan :</label>
+                    <input type="text" name="jalan" class="form-control <?= form_error('jalan') ? 'is-invalid' : '' ?>" value="<?= set_value('jalan'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('jalan') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">RT :</label>
+                    <input type="text" name="rt" class="form-control <?= form_error('rt') ? 'is-invalid' : '' ?>" value="<?= set_value('rt'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('rt') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">RW :</label>
+                    <input type="text" name="rw" class="form-control <?= form_error('rw') ? 'is-invalid' : '' ?>" value="<?= set_value('rw'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('rw') ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Kelurahan :</label>
+                    <input type="text" name="kel" class="form-control <?= form_error('kel') ? 'is-invalid' : '' ?>" value="<?= set_value('kel'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('kel') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Kecamatan :</label>
+                    <input type="text" name="kec" class="form-control <?= form_error('kec') ? 'is-invalid' : '' ?>" value="<?= set_value('kec'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('kec') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Kab/Kota :</label>
+                    <input type="text" name="kota" class="form-control <?= form_error('kota') ? 'is-invalid' : '' ?>" value="<?= set_value('kota'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('kota') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">Provinsi :</label>
+                    <input type="text" name="prov" class="form-control <?= form_error('prov') ? 'is-invalid' : '' ?>" value="<?= set_value('prov'); ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('prov') ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label for="">Nomor Rekening :</label>
                     <input type="text" name="rekening" class="form-control <?= form_error('rekening') ? 'is-invalid' : '' ?>" value="<?= set_value('rekening'); ?>">
@@ -52,13 +214,13 @@
                   <div class="form-group">
                     <label for="">Nama Bank :</label>
                     <select name="nama_bank" class="form-control">
-                      <?php foreach ($bank as $s) : ?>
-                        <option value="<?= $s['nama']; ?>"><?= $s['nama']; ?></option>
+                      <?php foreach ($bank as $r) : ?>
+                        <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                   <div class="form-group">
                     <label for="">Atas Nama :</label>
                     <input type="text" name="nama_rek" class="form-control <?= form_error('nama_rek') ? 'is-invalid' : '' ?>" value="<?= set_value('nama_rek'); ?>">
@@ -67,33 +229,14 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-lg-3">
                   <div class="form-group">
-                    <label for="">NPWP :</label>
-                    <input type="text" name="npwp" class="form-control <?= form_error('npwp') ? 'is-invalid' : '' ?>" value="<?= set_value('npwp'); ?>">
-                    <div class="invalid-feedback">
-                      <?= form_error('npwp') ?>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-1">
-                  <div class="form-group">
-                    <label for="">Gol :</label>
-                    <input type="text" name="gol" class="form-control <?= form_error('gol') ? 'is-invalid' : '' ?>" value="<?= set_value('gol'); ?>">
-                    <div class="invalid-feedback">
-                      <?= form_error('gol') ?>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-8">
-                  <div class="form-group">
-                    <label for="">Alamat :</label>
-                    <input type="text" name="alamat" class="form-control <?= form_error('alamat') ? 'is-invalid' : '' ?>" value="<?= set_value('alamat'); ?>">
-                    <div class="invalid-feedback">
-                      <?= form_error('alamat') ?>
-                    </div>
+                    <label for="">Golongan :</label>
+                    <select name="gol" class="form-control">
+                      <?php foreach ($gol as $r) : ?>
+                        <option value="<?= $r['nama']; ?>"><?= $r['nama']; ?></option>
+                      <?php endforeach; ?>
+                    </select>
                   </div>
                 </div>
               </div>

@@ -27,14 +27,18 @@ class Petugas extends CI_Controller
   {
     //providing data
     $data['title'] = $this->judul->title();
+    $data['kelamin'] = $this->db->get('ref_kelamin')->result_array();
+    $data['agama'] = $this->db->get('ref_agama')->result_array();
+    $data['kawin'] = $this->db->get('ref_kawin')->result_array();
+    $data['pendidikan'] = $this->db->get('ref_pendidikan')->result_array();
     $data['bank'] = $this->db->get('ref_bank')->result_array();
-    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
+    $data['gol'] = $this->db->get('ref_gol')->result_array();
     // validasi
     $rules = [
       [
         'field' => 'nik',
         'label' => 'NIK',
-        'rules' => 'required|trim|exact_length[16]'
+        'rules' => 'required|trim|exact_length[16]|is_unique[ref_petugas.nik]'
       ],
       [
         'field' => 'nama',
@@ -42,38 +46,63 @@ class Petugas extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'jabatan',
-        'label' => 'Jabatan',
+        'field' => 'tempat_lhr',
+        'label' => 'Tempat Lahir',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'gol',
-        'label' => 'Gol',
+        'field' => 'tgl_lhr',
+        'label' => 'Tanggal Lahir',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'rekening',
-        'label' => 'Rekening',
+        'field' => 'pekerjaan',
+        'label' => 'Pekerjaan',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'nama_bank',
-        'label' => 'Nama Bank',
+        'field' => 'nohp',
+        'label' => 'Nomor HP',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'nama_rek',
-        'label' => 'Nama Rekening',
+        'field' => 'email',
+        'label' => 'Email',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'npwp',
-        'label' => 'NPWP',
-        'rules' => 'required|trim|exact_length[15]'
+        'field' => 'jalan',
+        'label' => 'Jalan',
+        'rules' => 'required|trim'
       ],
       [
-        'field' => 'alamat',
-        'label' => 'Alamat',
+        'field' => 'rt',
+        'label' => 'RT',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'rw',
+        'label' => 'RW',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kel',
+        'label' => 'Kelurahan',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kec',
+        'label' => 'Kecamatan',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kota',
+        'label' => 'kab/Kota',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'prov',
+        'label' => 'Provinsi',
         'rules' => 'required|trim'
       ]
     ];
@@ -83,13 +112,27 @@ class Petugas extends CI_Controller
       $data = [
         'nik' => htmlspecialchars($this->input->post('nik', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
-        'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
-        'gol' => htmlspecialchars($this->input->post('gol', true)),
+        'tempat_lhr' => htmlspecialchars($this->input->post('tempat_lhr', true)),
+        'tgl_lhr' => strtotime(htmlspecialchars($this->input->post('tgl_lhr', true))),
+        'jenis_kel' => htmlspecialchars($this->input->post('jenis_kel', true)),
+        'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+        'agama' => htmlspecialchars($this->input->post('agama', true)),
+        'status_kawin' => htmlspecialchars($this->input->post('status_kawin', true)),
+        'pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
+        'nohp' => htmlspecialchars($this->input->post('nohp', true)),
+        'email' => htmlspecialchars($this->input->post('email', true)),
+        'npwp' => htmlspecialchars($this->input->post('npwp', true)),
+        'jalan' => htmlspecialchars($this->input->post('jalan', true)),
+        'rt' => htmlspecialchars($this->input->post('rt', true)),
+        'rw' => htmlspecialchars($this->input->post('rw', true)),
+        'kel' => htmlspecialchars($this->input->post('kel', true)),
+        'kec' => htmlspecialchars($this->input->post('kec', true)),
+        'kota' => htmlspecialchars($this->input->post('kota', true)),
+        'prov' => htmlspecialchars($this->input->post('prov', true)),
         'rekening' => htmlspecialchars($this->input->post('rekening', true)),
         'nama_bank' => htmlspecialchars($this->input->post('nama_bank', true)),
         'nama_rek' => htmlspecialchars($this->input->post('nama_rek', true)),
-        'npwp' => htmlspecialchars($this->input->post('npwp', true)),
-        'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+        'gol' => htmlspecialchars($this->input->post('gol', true)),
         'date_created' => time()
       ];
       $this->db->insert('ref_petugas', $data);
@@ -109,54 +152,78 @@ class Petugas extends CI_Controller
     if (!isset($id)) redirect('auth/blocked');
     // data
     $data['title'] = $this->judul->title();
+    $data['kelamin'] = $this->db->get('ref_kelamin')->result_array();
+    $data['agama'] = $this->db->get('ref_agama')->result_array();
+    $data['kawin'] = $this->db->get('ref_kawin')->result_array();
+    $data['pendidikan'] = $this->db->get('ref_pendidikan')->result_array();
     $data['bank'] = $this->db->get('ref_bank')->result_array();
-    $data['jabatan'] = $this->db->get('ref_jabatan')->result_array();
+    $data['gol'] = $this->db->get('ref_gol')->result_array();
     $data['petugas'] = $this->db->get_where('ref_petugas', ['id' => $id])->row_array();
     // validasi
     $rules = [
-      [
-        'field' => 'nik',
-        'label' => 'NIK',
-        'rules' => 'required|trim|exact_length[16]'
-      ],
       [
         'field' => 'nama',
         'label' => 'Nama',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'jabatan',
-        'label' => 'Jabatan',
+        'field' => 'tempat_lhr',
+        'label' => 'Tempat Lahir',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'gol',
-        'label' => 'Gol',
+        'field' => 'tgl_lhr',
+        'label' => 'Tanggal Lahir',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'rekening',
-        'label' => 'Rekening',
+        'field' => 'pekerjaan',
+        'label' => 'Pekerjaan',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'nama_bank',
-        'label' => 'Nama Bank',
+        'field' => 'nohp',
+        'label' => 'Nomor HP',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'nama_rek',
-        'label' => 'Nama Rekening',
+        'field' => 'email',
+        'label' => 'Email',
         'rules' => 'required|trim'
       ],
       [
-        'field' => 'npwp',
-        'label' => 'NPWP',
-        'rules' => 'required|trim|exact_length[15]'
+        'field' => 'jalan',
+        'label' => 'Jalan',
+        'rules' => 'required|trim'
       ],
       [
-        'field' => 'alamat',
-        'label' => 'Alamat',
+        'field' => 'rt',
+        'label' => 'RT',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'rw',
+        'label' => 'RW',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kel',
+        'label' => 'Kelurahan',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kec',
+        'label' => 'Kecamatan',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kota',
+        'label' => 'kab/Kota',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'prov',
+        'label' => 'Provinsi',
         'rules' => 'required|trim'
       ]
     ];
@@ -164,15 +231,28 @@ class Petugas extends CI_Controller
     if ($validation->run()) {
       //query
       $data = [
-        'nik' => htmlspecialchars($this->input->post('nik', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
-        'jabatan' => htmlspecialchars($this->input->post('jabatan', true)),
-        'gol' => htmlspecialchars($this->input->post('gol', true)),
+        'tempat_lhr' => htmlspecialchars($this->input->post('tempat_lhr', true)),
+        'tgl_lhr' => strtotime(htmlspecialchars($this->input->post('tgl_lhr', true))),
+        'jenis_kel' => htmlspecialchars($this->input->post('jenis_kel', true)),
+        'pekerjaan' => htmlspecialchars($this->input->post('pekerjaan', true)),
+        'agama' => htmlspecialchars($this->input->post('agama', true)),
+        'status_kawin' => htmlspecialchars($this->input->post('status_kawin', true)),
+        'pendidikan' => htmlspecialchars($this->input->post('pendidikan', true)),
+        'nohp' => htmlspecialchars($this->input->post('nohp', true)),
+        'email' => htmlspecialchars($this->input->post('email', true)),
+        'npwp' => htmlspecialchars($this->input->post('npwp', true)),
+        'jalan' => htmlspecialchars($this->input->post('jalan', true)),
+        'rt' => htmlspecialchars($this->input->post('rt', true)),
+        'rw' => htmlspecialchars($this->input->post('rw', true)),
+        'kel' => htmlspecialchars($this->input->post('kel', true)),
+        'kec' => htmlspecialchars($this->input->post('kec', true)),
+        'kota' => htmlspecialchars($this->input->post('kota', true)),
+        'prov' => htmlspecialchars($this->input->post('prov', true)),
         'rekening' => htmlspecialchars($this->input->post('rekening', true)),
         'nama_bank' => htmlspecialchars($this->input->post('nama_bank', true)),
         'nama_rek' => htmlspecialchars($this->input->post('nama_rek', true)),
-        'npwp' => htmlspecialchars($this->input->post('npwp', true)),
-        'alamat' => htmlspecialchars($this->input->post('alamat', true)),
+        'gol' => htmlspecialchars($this->input->post('gol', true)),
         'date_created' => time()
       ];
       $this->db->update('ref_petugas', $data, ['id' => $id]);

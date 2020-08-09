@@ -41,6 +41,23 @@ function is_logged_in2()
   }
 }
 
+function getBps()
+{
+  $ci = get_instance();
+  if (!$ci->session->userdata('nik')) {
+    redirect('auth');
+  } else {
+    $nik = $ci->session->userdata('nik');
+    $query = $ci->db->query("SELECT * FROM system_user WHERE nik='$nik'")->row_array();
+    $kdbps = $query['kdbps'];
+    $role_id = $query['role_id'];
+    return [
+      'kdbps' => $kdbps,
+      'role_id' => $role_id
+    ];
+  }
+}
+
 function check_nik($nik)
 {
   $ci = get_instance();
