@@ -9,6 +9,7 @@
       <?= $this->session->flashdata('message'); ?>
 
       <form action="<?= base_url('auth'); ?>" method="post" autocomplete="off">
+        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
         <div class="form-group has-feedback">
           <label>NIK :</label>
           <input type="text" name="nik" class="form-control <?= form_error('nik') ? 'is-invalid' : ''; ?>" placeholder="NIK" value="<?= set_value('nik'); ?>">

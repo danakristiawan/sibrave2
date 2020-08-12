@@ -28,9 +28,9 @@
                       <td><a href="<?= base_url('capaian/detail/') . $r['id']; ?>"><?= $r['nama'] ?></a></td>
                       <td><?= tanggal($r['tgl_mulai']); ?></td>
                       <td><?= tanggal($r['tgl_selesai']); ?></td>
-                      <td><?= number_format($r['jml'], 0, ',', '.'); ?></td>
+                      <td><?= number_format($r['target'], 0, ',', '.'); ?></td>
                       <td><?= number_format($r['capaian'], 0, ',', '.'); ?></td>
-                      <td><?= $r['jml'] <= $r['capaian'] ? '<span class="badge bg-success">Sudah Selesai</span>' : '<span class="badge bg-danger">Belum Selesai</span>'; ?></td>
+                      <td><?= $r['target'] <= $r['capaian'] ? '<span class="badge bg-success">Sudah Selesai</span>' : '<span class="badge bg-danger">Belum Selesai</span>'; ?></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

@@ -31,6 +31,11 @@
 <script src="<?= base_url(); ?>assets/dist/js/adminlte.js"></script>
 <script src="<?= base_url(); ?>/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 <script>
+  var csfrData = {};
+  csfrData['<?php echo $this->security->get_csrf_token_name(); ?>'] = '<?= $this->security->get_csrf_hash(); ?>';
+  $.ajaxSetup({
+    data: csfrData
+  });
   $('.datepicker').datepicker();
   $(function() {
     $('[data-toggle="tooltip"]').tooltip()
@@ -82,22 +87,44 @@
   $('.form-check-petugas').on('click', function() {
     let kegiatan_id = $(this).data('kegiatan_id');
     let sk_id = $(this).data('sk_id');
+    let kelurahan_id = $(this).data('kelurahan_id');
     let nik = $(this).data('nik');
     let nama = $(this).data('nama');
-    let jabatan = $(this).data('jabatan');
-    let gol = $(this).data('gol');
     let alamat = $(this).data('alamat');
+    let pekerjaan = $(this).data('pekerjaan');
+    let gol = $(this).data('gol');
     $.ajax({
       url: "<?= base_url('kegiatan/addpetugas'); ?>",
       type: 'post',
       data: {
         kegiatan_id: kegiatan_id,
         sk_id: sk_id,
+        kelurahan_id: kelurahan_id,
         nik: nik,
         nama: nama,
-        jabatan: jabatan,
-        gol: gol,
-        alamat: alamat
+        alamat: alamat,
+        pekerjaan: pekerjaan,
+        gol: gol
+      },
+      success: function() {
+        // console.log(data);
+      }
+    });
+  });
+
+  $('.form-check-kelurahan').on('click', function() {
+    let kegiatan_id = $(this).data('kegiatan_id');
+    let sk_id = $(this).data('sk_id');
+    let kode_desa = $(this).data('kode_desa');
+    let nama_desa = $(this).data('nama_desa');
+    $.ajax({
+      url: "<?= base_url('kegiatan/addkelurahan'); ?>",
+      type: 'post',
+      data: {
+        kegiatan_id: kegiatan_id,
+        sk_id: sk_id,
+        kode_desa: kode_desa,
+        nama_desa: nama_desa
       },
       success: function() {
         // console.log(data);

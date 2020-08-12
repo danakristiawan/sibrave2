@@ -4,6 +4,7 @@
       <div class="col-lg-6">
         <div class="card">
           <form action="" method="post" autocomplete="off">
+            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
             <div class="card-header">
 
             </div>
@@ -19,7 +20,7 @@
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>
-              <a href="<?= base_url('persetujuan/detail-capaian/') . $kegiatan_id . '/' . $sk_id . '/' . $nik; ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
+              <a href="<?= base_url('persetujuan/detail-capaian/') . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id .  '/' . $nik; ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
             </div>
           </form>
         </div>

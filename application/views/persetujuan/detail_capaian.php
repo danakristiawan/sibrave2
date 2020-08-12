@@ -4,8 +4,9 @@
             <div class="col-lg-8">
                 <div class="card">
                     <form action="" method="post" autocomplete="off">
+                        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
                         <div class="card-header">
-                            <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('persetujuan'); ?>">Daftar Kegiatan / </a><a href="<?= base_url('persetujuan/detail-sk/') . $kegiatan_id; ?>">Daftar Surat Keputusan / </a><a href="<?= base_url('persetujuan/detail-petugas/') . $kegiatan_id . '/' . $sk_id; ?>">Daftar Petugas / </a>Daftar Capaian</span>
+                            <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('persetujuan'); ?>">Daftar Kegiatan / </a><a href="<?= base_url('persetujuan/detail-sk/') . $kegiatan_id; ?>">Daftar Surat Keputusan / </a><a href="<?= base_url('persetujuan/detail-kelurahan/') . $kegiatan_id . '/' . $sk_id; ?>">Daftar Kelurahan / </a><a href="<?= base_url('persetujuan/detail-petugas/') . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id; ?>">Daftar Petugas / </a>Daftar Capaian</span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -29,7 +30,7 @@
                                                 <td><?= number_format($r['jumlah'], 0, ',', '.'); ?></td>
                                                 <td><?= $r['status'] == 0 ? '<span class="badge bg-danger">belum disetujui</span>' : '<span class="badge bg-success">sudah disetujui</span>'; ?></td>
                                                 <td>
-                                                    <a href="<?= base_url('persetujuan/edit/') . $kegiatan_id . '/' . $sk_id . '/' . $nik . '/' . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Proses"></i></a>
+                                                    <a href="<?= base_url('persetujuan/edit/') . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id . '/'  . $nik . '/' . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Proses"></i></a>
                                                 </td>
                                             </tr>
                                         <?php
@@ -50,7 +51,6 @@
                         <div class="card-footer">
                             <input type="hidden" name="capaian" value="<?= $total; ?>">
                             <button type="submit" class="btn btn-info float-right ml-2"><i class="fa fa-save"></i> Simpan</button>
-                            <a href="<?= base_url('persetujuan/detail-petugas/') . $kegiatan_id . '/' . $sk_id; ?>" class="btn btn-secondary float-right"><i class="fa fa-undo"></i> Batal</a>
                         </div>
                     </form>
                 </div>

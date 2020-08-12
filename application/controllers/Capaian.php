@@ -15,7 +15,7 @@ class Capaian extends CI_Controller
     // data
     $data['title'] = $this->judul->title();
     $nik = $this->session->userdata('nik');
-    $query = "SELECT b.id,b.nama,b.tgl_mulai,b.tgl_selesai,a.jml,a.capaian FROM data_petugas a LEFT JOIN data_kegiatan b ON a.kegiatan_id=b.id WHERE a.nik='$nik'";
+    $query = "SELECT b.id,b.nama,b.tgl_mulai,b.tgl_selesai,a.target,a.capaian FROM data_petugas a LEFT JOIN data_kegiatan b ON a.kegiatan_id=b.id WHERE a.nik='$nik'";
     $data['kegiatan'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
@@ -33,7 +33,7 @@ class Capaian extends CI_Controller
     $data['title'] = $this->judul->title();
     $data['kegiatan_id'] = $kegiatan_id;
     $nik = $this->session->userdata('nik');
-    $data['target'] = $this->db->query("SELECT jml,capaian FROM data_petugas WHERE kegiatan_id='$kegiatan_id' AND nik='$nik'")->row_array();
+    $data['target'] = $this->db->query("SELECT target,capaian FROM data_petugas WHERE kegiatan_id='$kegiatan_id' AND nik='$nik'")->row_array();
     $data['capaian'] = $this->db->get_where('data_capaian', ['kegiatan_id' => $kegiatan_id, 'nik' => $nik])->result_array();
     // form
     $this->load->view('template/header');

@@ -76,41 +76,7 @@ class User_petugas extends CI_Controller
     if (!isset($id)) show_404();
     // query
     if ($this->db->delete('system_user', ['id' => $id])) {
-      redirect('user');
+      redirect('user-petugas');
     }
   }
-
-  // public function edit($id = null)
-  // {
-  //   // cek id
-  //   if (!isset($id)) show_404();
-  //   // data
-  //   $data['title'] = $this->judul->title();
-  //   $data['user'] = $this->db->get_where('system_user', ['id' => $id])->row_array();
-  //   $data['role'] = $this->db->get('system_role')->result_array();
-
-  //   $rules = [
-  //     [
-  //       'field' => 'role_id',
-  //       'label' => 'Role ID',
-  //       'rules' => 'required|trim'
-  //     ]
-  //   ];
-
-  //   $validation = $this->form_validation->set_rules($rules);
-  //   if ($validation->run()) {
-  //     //query
-  //     $data = [
-  //       'role_id' => htmlspecialchars($this->input->post('role_id', true))
-  //     ];
-  //     $this->db->update('system_user', $data, ['id' => $id]);
-  //     redirect('user');
-  //   }
-  //   // form
-  //   $this->load->view('template/header');
-  //   $this->load->view('template/sidebar', $data);
-  //   $this->load->view('template/topbar', $data);
-  //   $this->load->view('user_petugas/edit', $data);
-  //   $this->load->view('template/footer');
-  // }
 }

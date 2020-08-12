@@ -4,8 +4,8 @@
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-header">
-                        <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('capaian'); ?>">Daftar Kegiatan / </a>Daftar Capaian (Target: <?= number_format($target['jml'], 0, ',', '.'); ?>)</span>
-                        <?php if ($target['jml'] > $target['capaian']) : ?>
+                        <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('capaian'); ?>">Daftar Kegiatan / </a>Daftar Capaian (Target: <?= number_format($target['target'], 0, ',', '.'); ?>)</span>
+                        <?php if ($target['target'] > $target['capaian']) : ?>
                             <a href="<?= base_url('capaian/add/') . $kegiatan_id; ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
                         <?php endif; ?>
                     </div>

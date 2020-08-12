@@ -220,6 +220,7 @@ class Kegiatan extends CI_Controller
     $data['kegiatan_id'] = $kegiatan_id;
     $data['title'] = $this->judul->title();
     $data['akun'] = $this->db->get('ref_akun')->result_array();
+    $data['rate'] = $this->db->get('ref_rate')->result_array();
     // validasi
     $rules = [
       [
@@ -246,6 +247,26 @@ class Kegiatan extends CI_Controller
         'field' => 'rate',
         'label' => 'Rate',
         'rules' => 'required|trim|numeric'
+      ],
+      [
+        'field' => 'no_spk',
+        'label' => 'No SPK',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_spk',
+        'label' => 'Tgl SPK',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'no_st',
+        'label' => 'No ST',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_st',
+        'label' => 'Tgl ST',
+        'rules' => 'required|trim'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
@@ -259,6 +280,11 @@ class Kegiatan extends CI_Controller
         'no_dipa' => htmlspecialchars($this->input->post('no_dipa', true)),
         'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
         'rate' => htmlspecialchars($this->input->post('rate', true)),
+        'jenis_rate' => htmlspecialchars($this->input->post('jenis_rate', true)),
+        'no_spk' => htmlspecialchars($this->input->post('no_spk', true)),
+        'tgl_spk' => strtotime(htmlspecialchars($this->input->post('tgl_spk', true))),
+        'no_st' => htmlspecialchars($this->input->post('no_st', true)),
+        'tgl_st' => strtotime(htmlspecialchars($this->input->post('tgl_st', true))),
         'date_created' => time()
       ];
       $this->db->insert('data_sk', $data);
@@ -282,6 +308,7 @@ class Kegiatan extends CI_Controller
     $data['title'] = $this->judul->title();
     $data['akun'] = $this->db->get('ref_akun')->result_array();
     $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
+    $data['rate'] = $this->db->get('ref_rate')->result_array();
     // validasi
     $rules = [
       [
@@ -308,6 +335,26 @@ class Kegiatan extends CI_Controller
         'field' => 'rate',
         'label' => 'Rate',
         'rules' => 'required|trim|numeric'
+      ],
+      [
+        'field' => 'no_spk',
+        'label' => 'No SPK',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_spk',
+        'label' => 'Tgl SPK',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'no_st',
+        'label' => 'No ST',
+        'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'tgl_st',
+        'label' => 'Tgl ST',
+        'rules' => 'required|trim'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
@@ -321,6 +368,11 @@ class Kegiatan extends CI_Controller
         'no_dipa' => htmlspecialchars($this->input->post('no_dipa', true)),
         'akun_id' => htmlspecialchars($this->input->post('akun_id', true)),
         'rate' => htmlspecialchars($this->input->post('rate', true)),
+        'jenis_rate' => htmlspecialchars($this->input->post('jenis_rate', true)),
+        'no_spk' => htmlspecialchars($this->input->post('no_spk', true)),
+        'tgl_spk' => strtotime(htmlspecialchars($this->input->post('tgl_spk', true))),
+        'no_st' => htmlspecialchars($this->input->post('no_st', true)),
+        'tgl_st' => strtotime(htmlspecialchars($this->input->post('tgl_st', true))),
         'date_created' => time()
       ];
       $this->db->update('data_sk', $data, ['id' => $id]);
@@ -366,8 +418,8 @@ class Kegiatan extends CI_Controller
     $html2pdf->output('sk.pdf');
   }
 
-  //petugas
-  public function petugas_index($kegiatan_id = null, $sk_id = null)
+  //kelurahan
+  public function kelurahan_index($kegiatan_id = null, $sk_id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
@@ -376,16 +428,16 @@ class Kegiatan extends CI_Controller
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
     $data['title'] = $this->judul->title();
-    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
+    $data['kelurahan'] = $this->db->get_where('data_kelurahan', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
     $this->load->view('template/topbar', $data);
-    $this->load->view('petugas/index', $data);
+    $this->load->view('kelurahan/index', $data);
     $this->load->view('template/footer');
   }
 
-  public function petugas_add($kegiatan_id = null, $sk_id = null)
+  public function kelurahan_add($kegiatan_id = null, $sk_id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
@@ -394,11 +446,116 @@ class Kegiatan extends CI_Controller
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
     $data['title'] = $this->judul->title();
+    $kdbps = getBps()['kdbps'];
+    $data['master'] = $this->db->query("SELECT DISTINCT kdprov,kdkab,kdkec,kddesa,nmdesa FROM ref_master_file WHERE kdbps='$kdbps'")->result_array();
+    // form
+    $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
+    $this->load->view('kelurahan/add', $data);
+    $this->load->view('template/footer');
+  }
+
+  public function addkelurahan()
+  {
+    $kegiatan_id = $this->input->post('kegiatan_id');
+    $sk_id = $this->input->post('sk_id');
+    $kode_desa = $this->input->post('kode_desa');
+    $nama_desa = $this->input->post('nama_desa');
+
+    $data = [
+      'kegiatan_id' => $kegiatan_id,
+      'sk_id' => $sk_id,
+      'kode_desa' => $kode_desa,
+      'nama_desa' => $nama_desa,
+      'date_created' => time()
+    ];
+    $cek = [
+      'kegiatan_id' => $kegiatan_id,
+      'sk_id' => $sk_id,
+      'kode_desa' => $kode_desa
+    ];
+
+    $result = $this->db->get_where('data_kelurahan', $cek);
+
+    if ($result->num_rows() < 1) {
+      $this->db->insert('data_kelurahan', $data);
+    } else {
+      $this->db->delete('data_kelurahan', $cek);
+    }
+  }
+
+  public function kelurahan_delete($kegiatan_id = null, $sk_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    // query
+    if ($this->db->delete('data_kelurahan', ['id' => $id])) {
+      redirect('kegiatan/kelurahan-index/' . $kegiatan_id . '/' . $sk_id . '');
+    }
+  }
+
+  //petugas
+  public function petugas_index($kegiatan_id = null, $sk_id = null, $kelurahan_id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
+    // data
+    $data['kegiatan_id'] = $kegiatan_id;
+    $data['sk_id'] = $sk_id;
+    $data['kelurahan_id'] = $kelurahan_id;
+    $data['title'] = $this->judul->title();
+    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'kelurahan_id' => $kelurahan_id])->result_array();
+    //query
+    // validasi
+    $rules = [
+      [
+        'field' => 'jumlah_petugas',
+        'label' => 'Jumlah Petugas',
+        'rules' => 'trim'
+      ]
+    ];
+    $validation = $this->form_validation->set_rules($rules);
+    if ($validation->run()) {
+      //query
+      $data = [
+        'jumlah_petugas' => htmlspecialchars($this->input->post('jumlah_petugas', true)),
+        'jumlah_target' => htmlspecialchars($this->input->post('jumlah_target', true)),
+        'jumlah_bruto' => htmlspecialchars($this->input->post('jumlah_bruto', true))
+      ];
+      $this->db->update('data_kelurahan', $data, ['id' => $kelurahan_id]);
+      redirect('kegiatan/kelurahan-index/' . $kegiatan_id . '/' . $sk_id . '');
+    }
+    // form
+    $this->load->view('template/header');
+    $this->load->view('template/sidebar', $data);
+    $this->load->view('template/topbar', $data);
+    $this->load->view('petugas/index', $data);
+    $this->load->view('template/footer');
+  }
+
+  public function petugas_add($kegiatan_id = null, $sk_id = null, $kelurahan_id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
+    //providing data
+    $data['kegiatan_id'] = $kegiatan_id;
+    $data['sk_id'] = $sk_id;
+    $data['kelurahan_id'] = $kelurahan_id;
+    $data['title'] = $this->judul->title();
+    // $data['token_name'] = $this->security->get_csrf_token_name();
+    // $data['token_hash'] = $this->security->get_csrf_hash();
     $data['petugas'] = [];
     // load ref petugas
     if ($this->input->post('keyword')) {
       $keyword = htmlspecialchars($this->input->post('keyword', true));
-      $this->db->select('nik,nama,jabatan,gol,alamat');
+      $this->db->select('nik,nama,jalan,rt,rw,kel,kec,kota,prov,pekerjaan,gol');
       $this->db->from('ref_petugas');
       $this->db->like('nama', $keyword);
       $this->db->or_like('nik', $keyword);
@@ -417,25 +574,46 @@ class Kegiatan extends CI_Controller
   {
     $kegiatan_id = $this->input->post('kegiatan_id');
     $sk_id = $this->input->post('sk_id');
+    $kelurahan_id = $this->input->post('kelurahan_id');
     $nik = $this->input->post('nik');
     $nama = $this->input->post('nama');
-    $jabatan = $this->input->post('jabatan');
-    $gol = $this->input->post('gol');
     $alamat = $this->input->post('alamat');
+    $pekerjaan = $this->input->post('pekerjaan');
+    $gol = $this->input->post('gol');
+
+    //no urut
+    $petugas = $this->db->query("SELECT no_urut FROM data_petugas WHERE kegiatan_id='$kegiatan_id' AND sk_id='$sk_id' ORDER BY no_urut DESC LIMIT 1")->row_array();
+    if ($petugas) {
+      $nomor = intval($petugas['no_urut']) + 1;
+      if (strlen($nomor) == 1) {
+        $no_urut = '000' . $nomor;
+      } else if (strlen($nomor) == 2) {
+        $no_urut = '00' . $nomor;
+      } else if (strlen($nomor) == 3) {
+        $no_urut = '0' . $nomor;
+      } else {
+        $no_urut = $nomor;
+      }
+    } else {
+      $no_urut = '0001';
+    }
 
     $data = [
       'kegiatan_id' => $kegiatan_id,
       'sk_id' => $sk_id,
+      'kelurahan_id' => $kelurahan_id,
       'nik' => $nik,
       'nama' => $nama,
-      'jabatan' => $jabatan,
-      'gol' => $gol,
       'alamat' => $alamat,
+      'pekerjaan' => $pekerjaan,
+      'gol' => $gol,
+      'no_urut' => $no_urut,
       'date_created' => time()
     ];
     $cek = [
       'kegiatan_id' => $kegiatan_id,
       'sk_id' => $sk_id,
+      'kelurahan_id' => $kelurahan_id,
       'nik' => $nik
     ];
 
@@ -448,15 +626,16 @@ class Kegiatan extends CI_Controller
     }
   }
 
-  public function petugas_delete($kegiatan_id = null, $sk_id = null, $id = null)
+  public function petugas_delete($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
     if (!isset($id)) redirect('auth/blocked');
     // query
     if ($this->db->delete('data_petugas', ['id' => $id])) {
-      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
+      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id . '');
     }
   }
 
@@ -546,44 +725,44 @@ class Kegiatan extends CI_Controller
     $this->load->view('template/footer');
   }
 
-  public function target_edit($kegiatan_id = null, $sk_id = null, $id = null)
+  public function target_edit($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
     if (!isset($id)) redirect('auth/blocked');
     //providing data
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
+    $data['kelurahan_id'] = $kelurahan_id;
     $data['title'] = $this->judul->title();
     $data['target'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
     // query
     // validasi
     $rules = [
       [
-        'field' => 'jml',
+        'field' => 'target',
         'label' => 'Target',
-        'rules' => 'required|numeric'
-      ],
-      [
-        'field' => 'satuan',
-        'label' => 'Satuan Biaya',
         'rules' => 'required|numeric'
       ]
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
       //query
-      $jml = htmlspecialchars($this->input->post('jml', true));
-      $satuan = htmlspecialchars($this->input->post('satuan', true));
-      $bruto = $jml * $satuan;
+      $target = htmlspecialchars($this->input->post('target', true));
+      $tarif = $this->db->query("SELECT rate,jenis_rate FROM data_sk WHERE kegiatan_id='$kegiatan_id' AND id='$sk_id'")->row_array();
+      if ($tarif['jenis_rate'] == 'Lumpsum') {
+        $bruto = $tarif['rate'];
+      } else {
+        $bruto = $target * $tarif['rate'];
+      }
       $data = [
-        'jml' => $jml,
-        'satuan' => $satuan,
+        'target' => $target,
         'bruto' => $bruto
       ];
       $this->db->update('data_petugas', $data, ['id' => $id]);
-      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '');
+      redirect('kegiatan/petugas-index/' . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id . '');
     }
     // form
     $this->load->view('template/header');

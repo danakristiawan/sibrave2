@@ -22,7 +22,7 @@
                   foreach ($sk as $r) : $no++; ?>
                     <tr>
                       <td><?= $no; ?></td>
-                      <td><a href="<?= base_url('persetujuan/detail-petugas/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
+                      <td><a href="<?= base_url('persetujuan/detail-kelurahan/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
                       <td><?= date('d-m-Y', $r['tanggal']); ?></td>
                       <td><?= $r['nama']; ?></td>
                     </tr>

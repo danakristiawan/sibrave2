@@ -4,6 +4,7 @@
       <div class="col-lg-10">
         <div class="card">
           <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
             <div class="card-header">
               <div class="card-text">
                 <p><?= $this->session->flashdata('message'); ?></p>

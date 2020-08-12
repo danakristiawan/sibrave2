@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <?php header("Cache-Control: public, max-age=60, s-maxage=60");?>
   <title>Aplikasi Sibrave</title>
   <link rel="shortcut icon" href="<?= base_url(); ?>assets/img/sibrave.png" type="image/x-icon">
   <!-- Tell the browser to be responsive to screen width -->

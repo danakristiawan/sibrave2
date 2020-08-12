@@ -58,6 +58,56 @@
                   <?= form_error('rate') ?>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="">Jenis Rate :</label>
+                <select name="jenis_rate" class="form-control">
+                  <?php foreach ($rate as $r) : ?>
+                    <option value="<?= $r['nama']; ?>" <?= $r['nama'] == $sk['jenis_rate'] ? 'selected' : ''; ?>><?= $r['nama']; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Nomor SPK :</label>
+                <input type="text" name="no_spk" class="form-control <?= form_error('no_spk') ? 'is-invalid' : '' ?>" value="<?= $sk['no_spk']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('no_spk') ?>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tgl_spk">Tgl SPK:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+                  <input class="form-control <?= form_error('tgl_spk') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_spk" value="<?= $sk['tgl_spk']; ?>">
+                  <div class="invalid-feedback">
+                    <?= form_error('tgl_spk') ?>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Nomor ST :</label>
+                <input type="text" name="no_st" class="form-control <?= form_error('no_st') ? 'is-invalid' : '' ?>" value="<?= $sk['no_st']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('no_st') ?>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tgl_st">Tgl ST:</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="fa fa-calendar"></i>
+                    </span>
+                  </div>
+                  <input class="form-control <?= form_error('tgl_st') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_st" value="<?= $sk['tgl_st']; ?>">
+                  <div class="invalid-feedback">
+                    <?= form_error('tgl_st') ?>
+                  </div>
+                </div>
+              </div>
 
             </div>
             <div class="card-footer">

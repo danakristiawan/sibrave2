@@ -16,7 +16,6 @@
                     <th>Nama</th>
                     <th>Target</th>
                     <th>Capaian</th>
-                    <th>Satuan</th>
                     <th>Jumlah</th>
                     <th>Cetak</th>
                   </tr>
@@ -28,9 +27,8 @@
                       <td><?= $no; ?></td>
                       <td><?= $r['nik']; ?></td>
                       <td><?= $r['nama']; ?></td>
-                      <td class="text-right"><?= number_format($r['jml'], 0, ',', '.'); ?></td>
+                      <td class="text-right"><?= number_format($r['target'], 0, ',', '.'); ?></td>
                       <td class="text-right"><?= number_format($r['capaian'], 0, ',', '.'); ?></td>
-                      <td class="text-right"><?= number_format($r['satuan'], 0, ',', '.'); ?></td>
                       <td class="text-right"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
                       <td><a href="<?= base_url('pembayaran/bast-cetak/') . $kegiatan_id . '/' . $sk_id . '/' . $r['nik']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="BAST"><i class="fa fa-file-pdf-o ml-2"></i></a></td>
                     </tr>

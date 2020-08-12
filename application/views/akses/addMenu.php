@@ -4,6 +4,7 @@
       <div class="col-md-4">
         <div class="card">
           <?= form_open(); ?>
+          <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
           <div class="card-header">
 
           </div>

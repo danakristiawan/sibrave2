@@ -19,6 +19,11 @@
                     <th>No DIPA</th>
                     <th>Akun</th>
                     <th>Rate</th>
+                    <th>Jenis</th>
+                    <th>No SPK</th>
+                    <th>Tgl SPK</th>
+                    <th>No ST</th>
+                    <th>Tgl ST</th>
                     <th>File</th>
                     <th>Aksi</th>
                   </tr>
@@ -28,12 +33,17 @@
                   foreach ($sk as $r) : $no++; ?>
                     <tr>
                       <td><?= $no; ?></td>
-                      <td><a href="<?= base_url('kegiatan/petugas-index/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
+                      <td><a href="<?= base_url('kegiatan/kelurahan-index/') . $kegiatan_id . '/'  . $r['id']; ?>"><?= $r['nomor']; ?></a></td>
                       <td><?= date('d-m-Y', $r['tanggal']); ?></td>
                       <td><?= $r['nama']; ?></td>
                       <td><?= $r['no_dipa']; ?></td>
                       <td><?= $r['kd_program'] . '.' . $r['kd_kegiatan'] . '.' . $r['kd_output'] . '.' . $r['kd_komponen'] . '.' . $r['kd_akun']; ?></td>
                       <td><?= number_format($r['rate'], 0, ',', '.'); ?></td>
+                      <td><?= $r['jenis_rate']; ?></td>
+                      <td><?= $r['no_spk']; ?></td>
+                      <td><?= date('d-m-Y', $r['tgl_spk']); ?></td>
+                      <td><?= $r['no_st']; ?></td>
+                      <td><?= date('d-m-Y', $r['tgl_st']); ?></td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-cetak/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="SK"><i class="fa fa-file-pdf-o"></i></a>
                       </td>

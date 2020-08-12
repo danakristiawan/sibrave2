@@ -9,6 +9,7 @@
       <?= $this->session->flashdata('message'); ?>
 
       <form action="<?= base_url('auth/forgot'); ?>" method="post" autocomplete="off">
+        <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
         <div class="form-group has-feedback">
           <label>Email :</label>
           <input type="text" name="email" class="form-control <?= form_error('email') ? 'is-invalid' : ''; ?>" placeholder="Email" value="<?= set_value('email'); ?>">

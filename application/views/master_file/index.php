@@ -13,8 +13,8 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>kddesa</th>
-                    <th>nmdesa</th>
+                    <th>Kode Kelurahan</th>
+                    <th>Nama Kelurahan</th>
                     <th>Jumlah</th>
                     <th>Aksi</th>
                   </tr>

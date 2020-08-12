@@ -82,6 +82,18 @@ function check_petugas($kegiatan_id, $sk_id, $nik)
   }
 }
 
+function check_kelurahan($kegiatan_id, $sk_id, $kode)
+{
+  $ci = get_instance();
+
+  $ci->db->where(['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'kode_desa' => $kode]);
+  $result = $ci->db->get('data_kelurahan');
+
+  if ($result->num_rows() > 0) {
+    return "checked='checked'";
+  }
+}
+
 function tanggal($tgl)
 {
   $bulan = date('m', $tgl);
