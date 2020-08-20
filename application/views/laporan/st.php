@@ -215,7 +215,7 @@
         </tr>
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">KEPALA <?= $bps['nama']; ?></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3">KEPALA <?= strtoupper($bps['nama']); ?></td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 60px;">
