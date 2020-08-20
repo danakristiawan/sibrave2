@@ -5,6 +5,7 @@
         <div class="card">
           <div class="card-header">
             <span style="font-size:18px;"><i class="fa fa-folder-o"></i> &nbsp;<a href="<?= base_url('kegiatan'); ?>">Daftar Kegiatan / </a><a href="<?= base_url('kegiatan/sk-index/') . $kegiatan_id; ?>">Daftar Surat Keputusan / </a><a href="<?= base_url('kegiatan/kelurahan-index/') . $kegiatan_id . '/' . $sk_id; ?>">Daftar Kelurahan / </a>Daftar Petugas</span>
+            <a href="<?= base_url('kegiatan/cetak-spk-all/') . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id; ?>" class="btn btn-sm btn-secondary float-right ml-2" data-toggle="tooltip" data-placement="bottom" title="Cetak"><i class="fa fa-print"></i></a>
             <a href="<?= base_url('kegiatan/petugas-add/') . $kegiatan_id . '/' . $sk_id . '/' . $kelurahan_id; ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
           </div>
           <div class="card-body">

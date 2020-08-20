@@ -106,12 +106,7 @@
             </tr>
             <tr>
                 <td class="logo">
-                    <b>BADAN PUSAT STATISTIK</b>
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>KOTA ADMINISTRASI JAKARTA SELATAN</b>
+                    <b><?= strtoupper($bps['nama']); ?></b>
                 </td>
             </tr>
         </table>
@@ -197,41 +192,70 @@
         <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Surat Perintah Kerja</td>
             <td style="width:5%; text-align:center;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:75%; text-align:left;font-size:11px;vertical-align:top;">Nomor <?= $petugas['no_spk']; ?>, tanggal <?= tanggal($petugas['tgl_spk']); ?></td>
+            <td style="width:75%; text-align:left;font-size:11px;vertical-align:top;">Nomor <?= $petugas['no_urut'] . $sk['no_spk']; ?>, tanggal <?= tanggal($sk['tgl_spk']); ?></td>
         </tr>
         <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Surat Tugas</td>
             <td style="width:5%; text-align:center;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:75%; text-align:left;font-size:11px;vertical-align:top;">Nomor <?= $petugas['no_st']; ?>, tanggal <?= tanggal($petugas['tgl_spk']); ?></td>
+            <td style="width:75%; text-align:left;font-size:11px;vertical-align:top;">Nomor <?= $petugas['no_urut'] . $sk['no_st']; ?>, tanggal <?= tanggal($sk['tgl_spk']); ?></td>
         </tr>
     </table>
     <table class="isi" style="margin-top:30px;">
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;">Yang Menerima,</td>
-            <td style="width:34%; text-align:center;font-size:11px;">Mengetahui</td>
+            <td style="width:34%; text-align:center;font-size:11px;"></td>
             <td style="width:33%; text-align:center;font-size:11px;">Jakarta,</td>
         </tr>
         <tr>
-            <td style="width:33%; text-align:center;font-size:11px;">Subject Matter</td>
-            <td style="width:34%; text-align:center;font-size:11px;">Pejabat Pembuat Komitmen</td>
+            <td style="width:33%; text-align:center;font-size:11px;">Penanggungjawab Kegiatan</td>
+            <td style="width:34%; text-align:center;font-size:11px;"></td>
             <td style="width:33%; text-align:center;font-size:11px;">Yang Menyerahkan</td>
         </tr>
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;"></td>
-            <td style="width:34%; text-align:center;font-size:11px;">BPS Kota Jakarta Selatan</td>
+            <td style="width:34%; text-align:center;font-size:11px;"></td>
             <td style="width:33%; text-align:center;font-size:11px;"></td>
         </tr>
     </table>
     <table class="isi" style="margin-top:30px;">
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;"><?= $kegiatan['nama_peg']; ?></td>
-            <td style="width:34%; text-align:center;font-size:11px;">Helmy Azhary, S.Si, MM</td>
+            <td style="width:34%; text-align:center;font-size:11px;"></td>
             <td style="width:33%; text-align:center;font-size:11px;"><?= $petugas['nama']; ?></td>
         </tr>
         <tr>
             <td style="width:33%; text-align:center;font-size:11px;">NIP. <?= $kegiatan['nip_peg']; ?></td>
-            <td style="width:34%; text-align:center;font-size:11px;">NIP. 19741031 199612 1 001</td>
+            <td style="width:34%; text-align:center;font-size:11px;"></td>
             <td style="width:33%; text-align:center;font-size:11px;">NIK. <?= $petugas['nik']; ?></td>
+        </tr>
+    </table>
+    <table class="isi" style="margin-top:30px;">
+        <tr>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;">Mengetahui</td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+        </tr>
+        <tr>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;">Pejabat Pembuat Komitmen</td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+        </tr>
+        <tr>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;"><?= $bps['nama']; ?></td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+        </tr>
+    </table>
+    <table class="isi" style="margin-top:30px;">
+        <tr>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;"><?= $ppk['nama_peg']; ?></td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+        </tr>
+        <tr>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
+            <td style="width:34%; text-align:center;font-size:11px;">NIP. <?= $ppk['nip_peg']; ?></td>
+            <td style="width:33%; text-align:center;font-size:11px;"></td>
         </tr>
     </table>
 </page>

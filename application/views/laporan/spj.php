@@ -264,22 +264,22 @@
             <td class="tabel_1" style="text-align: center;">No</td>
             <td class="tabel_2" style="text-align: center;">Nama</td>
             <td class="tabel_3" style="text-align: center;">Gol</td>
-            <td class="tabel_4" style="text-align: center;">Jml</td>
-            <td class="tabel_5" style="text-align: center;">Tarif</td>
-            <td class="tabel_6" style="text-align: center;">Bruto</td>
+            <td class="tabel_4" style="text-align: center;">Dok</td>
+            <td class="tabel_5" style="text-align: center;">Honor per Dok (Rp)</td>
+            <td class="tabel_6" style="text-align: center;">Jumlah Kotor (Rp)</td>
             <td class="tabel_7" style="text-align: center;">PPh</td>
-            <td class="tabel_8" style="text-align: center;">Netto</td>
+            <td class="tabel_8" style="text-align: center;">Jumlah Bersih (Rp)</td>
             <td class="tabel_9" style="text-align: center; vertical-align:middle;">TTD</td>
         </tr>
         <?php $no = 1;
         $jml = 0;
-        foreach ($petugas as $r) : ?>
+        foreach ($spj as $r) : ?>
             <tr>
                 <td class="tabel_1"><?= $no++; ?></td>
                 <td class="tabel_2"><?= $r['nama']; ?></td>
                 <td class="tabel_3"><?= $r['gol']; ?></td>
-                <td class="tabel_4"><?= number_format($r['capaian'], 0, ',', '.'); ?></td>
-                <td class="tabel_5"><?= number_format($r['satuan'], 0, ',', '.'); ?></td>
+                <td class="tabel_4"><?= number_format($r['target'], 0, ',', '.'); ?></td>
+                <td class="tabel_5"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
                 <td class="tabel_6"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
                 <td class="tabel_7">0</td>
                 <td class="tabel_8"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
@@ -317,13 +317,13 @@
     </table>
     <table class="isi" style="margin-top:30px;">
         <tr>
-            <td style="width:33%; text-align:center;font-size:11px;">Helmy Azhary, S.Si, MM</td>
-            <td style="width:34%; text-align:center;font-size:11px;">Andriani</td>
+            <td style="width:33%; text-align:center;font-size:11px;"><?= $ppk['nama_peg']; ?></td>
+            <td style="width:34%; text-align:center;font-size:11px;"><?= $bendahara['nama_peg']; ?></td>
             <td style="width:33%; text-align:center;font-size:11px;"><?= $kegiatan['nama_peg']; ?></td>
         </tr>
         <tr>
-            <td style="width:33%; text-align:center;font-size:11px;">NIP. 19741031 199612 1 001</td>
-            <td style="width:34%; text-align:center;font-size:11px;">NIP. 196510261988022002</td>
+            <td style="width:33%; text-align:center;font-size:11px;">NIP. <?= $ppk['nip_peg']; ?></td>
+            <td style="width:34%; text-align:center;font-size:11px;">NIP. <?= $bendahara['nip_peg']; ?></td>
             <td style="width:33%; text-align:center;font-size:11px;">NIP. <?= $kegiatan['nip_peg']; ?></td>
         </tr>
     </table>

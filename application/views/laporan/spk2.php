@@ -63,35 +63,35 @@
     td.isi_1 {
         text-align: left;
         width: 15%;
-        font-size: 13px;
+        font-size: 11px;
         vertical-align: top;
     }
 
     td.isi_2 {
         text-align: center;
         width: 5%;
-        font-size: 13px;
+        font-size: 11px;
         vertical-align: top;
     }
 
     td.isi_3 {
         text-align: justify;
         width: 80%;
-        font-size: 13px;
+        font-size: 11px;
         vertical-align: top;
     }
 
     td.isi_4 {
         text-align: left;
         width: 5%;
-        font-size: 13px;
+        font-size: 11px;
         vertical-align: top;
     }
 
     td.isi_5 {
         text-align: justify;
         width: 75%;
-        font-size: 13px;
+        font-size: 11px;
         vertical-align: top;
     }
 </style>

@@ -806,7 +806,7 @@ class Kegiatan extends CI_Controller
     $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
     $html2pdf->pdf->SetTitle('SPK');
     $html2pdf->writeHTML($html);
-    $html2pdf->output('spk.pdf');
+    $html2pdf->output('spk.pdf', 'D');
   }
 
   public function st_cetak($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
@@ -831,5 +831,26 @@ class Kegiatan extends CI_Controller
     $html2pdf->pdf->SetTitle('ST');
     $html2pdf->writeHTML($html);
     $html2pdf->output('st.pdf');
+  }
+
+  public function cetak_spk_all($kegiatan_id = null, $sk_id = null, $kelurahan_id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
+    // query
+    $kdbps = getBps()['kdbps'];
+    $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
+    $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.id='$sk_id'")->row_array();
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps, 'kode' => '02'])->row_array();
+    $data['lampiran'] = $this->db->get_where('data_lampiran_spk', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
+    //cetak
+    $petugas = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id, 'kelurahan_id' => $kelurahan_id])->result_array();
+
+    foreach ($petugas as $r) {
+      $this->spk_cetak($kegiatan_id, $sk_id, $kelurahan_id, $r['id']);
+    }
   }
 }
