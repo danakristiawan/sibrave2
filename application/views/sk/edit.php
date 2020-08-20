@@ -4,6 +4,7 @@
       <div class="col-lg-6">
         <div class="card">
           <form action="" method="post" autocomplete="off">
+            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
             <div class="card-header">
 
             </div>
@@ -81,10 +82,17 @@
                       <i class="fa fa-calendar"></i>
                     </span>
                   </div>
-                  <input class="form-control <?= form_error('tgl_spk') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_spk" value="<?= $sk['tgl_spk']; ?>">
+                  <input class="form-control <?= form_error('tgl_spk') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_spk" value="<?= date('d-m-Y', $sk['tgl_spk']); ?>">
                   <div class="invalid-feedback">
                     <?= form_error('tgl_spk') ?>
                   </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Uraian Periode :</label>
+                <input type="text" name="lama" class="form-control <?= form_error('lama') ? 'is-invalid' : '' ?>" value="<?= $sk['lama']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('lama') ?>
                 </div>
               </div>
               <div class="form-group">
@@ -102,7 +110,7 @@
                       <i class="fa fa-calendar"></i>
                     </span>
                   </div>
-                  <input class="form-control <?= form_error('tgl_st') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_st" value="<?= $sk['tgl_st']; ?>">
+                  <input class="form-control <?= form_error('tgl_st') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_st" value="<?= date('d-m-Y', $sk['tgl_st']); ?>">
                   <div class="invalid-feedback">
                     <?= form_error('tgl_st') ?>
                   </div>

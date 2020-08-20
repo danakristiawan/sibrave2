@@ -4,6 +4,7 @@
       <div class="col-lg-6">
         <div class="card">
           <form action="" method="post" autocomplete="off">
+            <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" style="display: none">
             <div class="card-header">
 
             </div>
@@ -85,6 +86,13 @@
                   <div class="invalid-feedback">
                     <?= form_error('tgl_spk') ?>
                   </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Uraian Periode :</label>
+                <input type="text" name="lama" class="form-control <?= form_error('lama') ? 'is-invalid' : '' ?>" value="<?= set_value('lama'); ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('lama') ?>
                 </div>
               </div>
               <div class="form-group">

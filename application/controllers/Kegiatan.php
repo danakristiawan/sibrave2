@@ -259,6 +259,11 @@ class Kegiatan extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'lama',
+        'label' => 'Lama',
+        'rules' => 'trim'
+      ],
+      [
         'field' => 'no_st',
         'label' => 'No ST',
         'rules' => 'required|trim'
@@ -283,6 +288,7 @@ class Kegiatan extends CI_Controller
         'jenis_rate' => htmlspecialchars($this->input->post('jenis_rate', true)),
         'no_spk' => htmlspecialchars($this->input->post('no_spk', true)),
         'tgl_spk' => strtotime(htmlspecialchars($this->input->post('tgl_spk', true))),
+        'lama' => htmlspecialchars($this->input->post('lama', true)),
         'no_st' => htmlspecialchars($this->input->post('no_st', true)),
         'tgl_st' => strtotime(htmlspecialchars($this->input->post('tgl_st', true))),
         'date_created' => time()
@@ -347,6 +353,11 @@ class Kegiatan extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'lama',
+        'label' => 'Lama',
+        'rules' => 'trim'
+      ],
+      [
         'field' => 'no_st',
         'label' => 'No ST',
         'rules' => 'required|trim'
@@ -371,6 +382,7 @@ class Kegiatan extends CI_Controller
         'jenis_rate' => htmlspecialchars($this->input->post('jenis_rate', true)),
         'no_spk' => htmlspecialchars($this->input->post('no_spk', true)),
         'tgl_spk' => strtotime(htmlspecialchars($this->input->post('tgl_spk', true))),
+        'lama' => htmlspecialchars($this->input->post('lama', true)),
         'no_st' => htmlspecialchars($this->input->post('no_st', true)),
         'tgl_st' => strtotime(htmlspecialchars($this->input->post('tgl_st', true))),
         'date_created' => time()
@@ -772,15 +784,21 @@ class Kegiatan extends CI_Controller
     $this->load->view('template/footer');
   }
 
-  public function spk_cetak($kegiatan_id = null, $sk_id = null, $id = null)
+  public function spk_cetak($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
     if (!isset($id)) redirect('auth/blocked');
     // query
+    $kdbps = getBps()['kdbps'];
+    $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
     $data['petugas'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
     $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.id='$sk_id'")->row_array();
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps, 'kode' => '02'])->row_array();
+    $data['lampiran'] = $this->db->get_where('data_lampiran_spk', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
     //cetak
     ob_start();
     $this->load->view('laporan/spk', $data);
@@ -791,15 +809,20 @@ class Kegiatan extends CI_Controller
     $html2pdf->output('spk.pdf');
   }
 
-  public function st_cetak($kegiatan_id = null, $sk_id = null, $id = null)
+  public function st_cetak($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
   {
     // cek id
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($sk_id)) redirect('auth/blocked');
+    if (!isset($kelurahan_id)) redirect('auth/blocked');
     if (!isset($id)) redirect('auth/blocked');
     // query
+    $kdbps = getBps()['kdbps'];
+    $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
+    $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps, 'kode' => '01'])->row_array();
     $data['petugas'] = $this->db->get_where('data_petugas', ['id' => $id])->row_array();
     $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    $data['sk'] = $this->db->query("SELECT a.*,b.kd_program,b.kd_kegiatan ,b.kd_output,b.kd_komponen,b.kd_akun FROM data_sk a LEFT JOIN ref_akun b ON a.akun_id=b.id WHERE a.id='$sk_id'")->row_array();
     //cetak
     ob_start();
     $this->load->view('laporan/st', $data);

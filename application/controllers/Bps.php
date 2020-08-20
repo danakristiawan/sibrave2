@@ -35,6 +35,11 @@ class Bps extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'alamat',
+        'label' => 'Alamat',
+        'rules' => 'required|trim'
+      ],
+      [
         'field' => 'kode',
         'label' => 'Kode',
         'rules' => 'required|trim|exact_length[4]|numeric'
@@ -46,6 +51,7 @@ class Bps extends CI_Controller
       $data = [
         'kode' => htmlspecialchars($this->input->post('kode', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'alamat' => htmlspecialchars($this->input->post('alamat', true)),
         'date_created' => time()
       ];
       $this->db->insert('ref_bps', $data);
@@ -74,6 +80,11 @@ class Bps extends CI_Controller
         'rules' => 'required|trim'
       ],
       [
+        'field' => 'alamat',
+        'label' => 'Alamat',
+        'rules' => 'required|trim'
+      ],
+      [
         'field' => 'kode',
         'label' => 'Kode',
         'rules' => 'required|trim|exact_length[4]|numeric'
@@ -85,6 +96,7 @@ class Bps extends CI_Controller
       $data = [
         'kode' => htmlspecialchars($this->input->post('kode', true)),
         'nama' => htmlspecialchars($this->input->post('nama', true)),
+        'alamat' => htmlspecialchars($this->input->post('alamat', true)),
         'date_created' => time()
       ];
       $this->db->update('ref_bps', $data, ['id' => $id]);

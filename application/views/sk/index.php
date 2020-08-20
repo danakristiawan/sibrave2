@@ -22,6 +22,7 @@
                     <th>Jenis</th>
                     <th>No SPK</th>
                     <th>Tgl SPK</th>
+                    <th>Periode</th>
                     <th>No ST</th>
                     <th>Tgl ST</th>
                     <th>File</th>
@@ -42,6 +43,7 @@
                       <td><?= $r['jenis_rate']; ?></td>
                       <td><?= $r['no_spk']; ?></td>
                       <td><?= date('d-m-Y', $r['tgl_spk']); ?></td>
+                      <td><?= $r['lama']; ?></td>
                       <td><?= $r['no_st']; ?></td>
                       <td><?= date('d-m-Y', $r['tgl_st']); ?></td>
                       <td>

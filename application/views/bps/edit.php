@@ -23,6 +23,13 @@
                   <?= form_error('nama') ?>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="">Alamat :</label>
+                <input type="text" name="alamat" class="form-control <?= form_error('alamat') ? 'is-invalid' : '' ?>" value="<?= $bps['alamat']; ?>">
+                <div class="invalid-feedback">
+                  <?= form_error('alamat') ?>
+                </div>
+              </div>
 
             </div>
             <div class="card-footer">
