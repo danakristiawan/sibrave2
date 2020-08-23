@@ -182,13 +182,6 @@
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
-            <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Jabatan</td>
-            <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;"><?= $petugas['pekerjaan']; ?></td>
-        </tr>
-    </table>
-    <table class="isi" style="margin-top: 5px;">
-        <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Untuk</td>
             <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
             <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Melaksanakan kegiatan <?= $kegiatan['jenis']; ?> dalam rangka <?= $kegiatan['nama']; ?></td>
