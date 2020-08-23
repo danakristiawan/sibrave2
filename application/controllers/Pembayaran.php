@@ -48,7 +48,8 @@ class Pembayaran extends CI_Controller
     $data['title'] = $this->judul->title();
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
-    $data['petugas'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
+    // $data['petugas'] = $this->db->get_where('view_pembayaran', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $sk_id])->result_array();
+    $data['petugas'] = $this->db->query("SELECT * FROM data_petugas WHERE kegiatan_id='$kegiatan_id' AND sk_id='$sk_id' AND target<=capaian")->result_array();
     // form
     $this->load->view('template/header');
     $this->load->view('template/sidebar', $data);
