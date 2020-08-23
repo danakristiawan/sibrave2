@@ -157,11 +157,11 @@
                 <tbody>
                   <tr>
                     <td>Tempat, Tgl Lahir</td>
-                    <td><?= $referensi['tempat_lhr'] . ', ' . tanggal($referensi['tgl_lhr']); ?></td>
+                    <td><?= $referensi ? $referensi['tempat_lhr'] . ', ' . tanggal($referensi['tgl_lhr']) : ''; ?></td>
                   </tr>
                   <tr>
                     <td>Alamat</td>
-                    <td><?= $referensi['jalan'] . ' Rt. ' . $referensi['rt'] . ' Rw. ' . $referensi['rw'] . ', Kel. ' . $referensi['kel'] . ', Kec. ' . $referensi['kec'] . ', Kab/Kota ' . $referensi['kota'] . ', Provinsi ' . $referensi['prov']; ?></td>
+                    <td><?= $referensi ? $referensi['jalan'] . ' Rt. ' . $referensi['rt'] . ' Rw. ' . $referensi['rw'] . ', Kel. ' . $referensi['kel'] . ', Kec. ' . $referensi['kec'] . ', Kab/Kota ' . $referensi['kota'] . ', Provinsi ' . $referensi['prov'] : ''; ?></td>
                   </tr>
                   <tr>
                     <td>No HP</td>
@@ -169,7 +169,7 @@
                   </tr>
                   <tr>
                     <td>Rekening</td>
-                    <td><?= $referensi['rekening'] . ' pada Bank ' . $referensi['rekening'] . ' atas nama ' . $referensi['nama_rek']; ?></td>
+                    <td><?= $referensi ? $referensi['rekening'] . ' pada Bank ' . $referensi['rekening'] . ' atas nama ' . $referensi['nama_rek'] : ''; ?></td>
                   </tr>
                 </tbody>
               </table>
