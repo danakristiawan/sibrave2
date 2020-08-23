@@ -27,7 +27,7 @@
                       <td><?= $no; ?></td>
                       <td><?= $r['nik']; ?></td>
                       <td><?= $r['nama']; ?></td>
-                      <td class="text-right"><?= number_format($r['jml'], 0, ',', '.'); ?></td>
+                      <td class="text-right"><?= number_format($r['target'], 0, ',', '.'); ?></td>
                       <td class="text-right"><?= number_format($r['capaian'], 0, ',', '.'); ?></td>
                       <td>
                         <div class="review-block-rate">

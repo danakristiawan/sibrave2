@@ -48,7 +48,7 @@ class Rating extends CI_Controller
     $data['title'] = $this->judul->title();
     $data['kegiatan_id'] = $kegiatan_id;
     $data['sk_id'] = $sk_id;
-    $query = "SELECT a.id,a.nik,a.nama,a.jml,a.capaian,b.rating FROM data_petugas a LEFT JOIN data_rating b ON a.id=b.petugas_id WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$sk_id'";
+    $query = "SELECT a.id,a.nik,a.nama,a.target,a.capaian,b.rating FROM data_petugas a LEFT JOIN data_rating b ON a.id=b.petugas_id WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$sk_id'";
     $data['petugas'] = $this->db->query($query)->result_array();
     // form
     $this->load->view('template/header');
