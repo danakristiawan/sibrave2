@@ -96,24 +96,9 @@
     }
 </style>
 
-<page backtop="30mm" backbottom="0mm" backleft="20mm" backright="20mm">
+<page backtop="10mm" backbottom="35mm" backleft="20mm" backright="20mm">
     <page_header>
         <table class="page_header" cellspacing="0px" cellpadding="0px">
-            <tr>
-                <td class="logo">
-                    <img src="<?= base_url(); ?>assets/img/logobps.png" alt="logo bps" width="70">
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>BADAN PUSAT STATISTIK</b>
-                </td>
-            </tr>
-            <tr>
-                <td class="logo">
-                    <b>KOTA ADMINISTRASI JAKARTA SELATAN</b>
-                </td>
-            </tr>
         </table>
     </page_header>
     <page_footer>
@@ -128,13 +113,16 @@
         <tr>
             <td class="head"><b><?= strtoupper($kegiatan['nama']); ?></b></td>
         </tr>
+        <tr>
+            <td class="head"><b><?= strtoupper($bps['nama']); ?></b></td>
+        </tr>
     </table>
-    <table class="header" style="margin-top: 5px;">
+    <table class="header" style="margin-top: 15px;">
         <tr>
             <td class="head"><b>NOMOR : <?= $petugas['no_urut'] . $sk['no_spk']; ?></b></td>
         </tr>
     </table>
-    <table class="isi" style="margin-top: 5px;">
+    <table class="isi" style="margin-top: 15px;">
         <tr>
             <td style="width:100%; text-align:justify;font-size:11px;">Pada hari ini <?= hari($sk['tgl_spk']); ?>, tanggal <?= terbilang(date('d', $sk['tgl_spk'])); ?>, bulan <?= bulan($sk['tgl_spk']); ?>, tahun <?= terbilang(date('Y', $sk['tgl_spk'])); ?>, bertempat di <?= $bps['alamat']; ?>, yang bertanda tangan di bawah ini:</td>
         </tr>
@@ -144,19 +132,19 @@
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">1.</td>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"><?= $jabatan['nama_peg']; ?></td>
             <td style="width:5%; text-align:center;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:70%; text-align:justify;font-size:11px;vertical-align:top;">Pejabat Pembuat Komitmen <?= $bps['nama']; ?> untuk kode kegiatan <?= $sk['kd_program'] . '.' . $sk['kd_kegiatan']; ?>, berkedudukan di <?= $bps['alamat']; ?>, bertindak untuk dan atas nama <?= $bps['nama']; ?>, selanjutnya disebut PIHAK PERTAMA.</td>
+            <td style="width:70%; text-align:justify;font-size:11px;vertical-align:top;">Pejabat Pembuat Komitmen <?= $bps['nama']; ?> untuk kode kegiatan <?= $sk['kd_program'] . '.' . $sk['kd_kegiatan']; ?>, berkedudukan di <?= $bps['alamat']; ?>, bertindak untuk dan atas nama <?= $bps['nama']; ?>, selanjutnya disebut <b>PIHAK PERTAMA</b>.</td>
         </tr>
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">2.</td>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;"><?= $petugas['nama']; ?></td>
             <td style="width:5%; text-align:center;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:70%; text-align:justify;font-size:11px;vertical-align:top;">NIK <?= $petugas['nik']; ?>, pekerjaan <?= $petugas['pekerjaan']; ?>, berkedudukan di <?= $petugas['alamat']; ?>, bertindak untuk dan atas nama diri sendiri, selanjutnya disebut PIHAK KEDUA.
+            <td style="width:70%; text-align:justify;font-size:11px;vertical-align:top;">NIK <?= $petugas['nik']; ?>, pekerjaan <?= $petugas['pekerjaan']; ?>, berkedudukan di <?= $petugas['alamat']; ?>, bertindak untuk dan atas nama diri sendiri, selanjutnya disebut <b>PIHAK KEDUA</b>.
             </td>
         </tr>
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">bahwa PIHAK PERTAMA dan PIHAK KEDUA yang secara bersama-sama disebut PARA PIHAK, sepakat untuk mengikatkan diri dalam Perjanjian Kerja Petugas <?= $kegiatan['nama']; ?> di <?= $bps['nama']; ?> yang selanjutnya disebut Perjanjian, dengan ketentuan-ketentuan sebagai berikut:</td>
+            <td style="width:100%; text-align:justify;font-size:11px;">bahwa <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> yang secara bersama-sama disebut PARA PIHAK, sepakat untuk mengikatkan diri dalam Perjanjian Kerja Petugas <?= $kegiatan['nama']; ?> di <?= $bps['nama']; ?> yang selanjutnya disebut Perjanjian, dengan ketentuan-ketentuan sebagai berikut:</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -166,7 +154,7 @@
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">PIHAK PERTAMA memberikan pekerjaan kepada PIHAK KEDUA dan PIHAK KEDUA menerima pekerjaan dari PIHAK PERTAMA sebagai Petugas <?= $kegiatan['nama']; ?>, dengan lingkup pekerjaan yang ditetapkan oleh PIHAK PERTAMA.</td>
+            <td style="width:100%; text-align:justify;font-size:11px;"><b>PIHAK PERTAMA</b> memberikan pekerjaan kepada <b>PIHAK KEDUA</b> dan <b>PIHAK KEDUA</b> menerima pekerjaan dari <b>PIHAK PERTAMA</b> sebagai Petugas <?= $kegiatan['nama']; ?>, dengan lingkup pekerjaan yang ditetapkan oleh <b>PIHAK PERTAMA</b>.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -176,7 +164,7 @@
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">Ruang lingkup pekerjaan dalam perjanjian ini mengacu pada wilayah kerja, pedoman pencacahan <?= $kegiatan['nama']; ?>, suplemen pedoman pencacahan <?= $kegiatan['nama']; ?>, dan ketentuan-ketentuan yang ditetapkan oleh PIHAK PERTAMA</td>
+            <td style="width:100%; text-align:justify;font-size:11px;">Ruang lingkup pekerjaan dalam perjanjian ini mengacu pada wilayah kerja, pedoman pencacahan <?= $kegiatan['nama']; ?>, suplemen pedoman pencacahan <?= $kegiatan['nama']; ?>, dan ketentuan-ketentuan yang ditetapkan oleh <b>PIHAK PERTAMA</b></td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -205,7 +193,7 @@
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">PIHAK KEDUA berkewajiban melaksanakan seluruh pekerjaan yang diberikan oleh PIHAK PERTAMA sampai selesai sesuai ruang lingkup pekerjaan sebagaimana dimaksud dalam pasal 2, dengan menerapkan protokol kesehatan pencegahan Covid-19 yang berlaku diwilayah kerja masing-masing.</td>
+            <td style="width:100%; text-align:justify;font-size:11px;"><b>PIHAK KEDUA</b> berkewajiban melaksanakan seluruh pekerjaan yang diberikan oleh <b>PIHAK PERTAMA</b> sampai selesai sesuai ruang lingkup pekerjaan sebagaimana dimaksud dalam pasal 2, dengan menerapkan protokol kesehatan pencegahan Covid-19 yang berlaku diwilayah kerja masing-masing.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -216,19 +204,19 @@
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(1).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">PIHAK KEDUA berhak untuk mendapatkan honorarium petugas dari pihak pertama sebesar Rp <?= number_format($petugas['bruto'], 0, ',', '.'); ?> (<?= terbilang($petugas['bruto'], 2); ?> rupiah), sudah termasuk biaya pajak, bea materai, pulsa dan kuota internet untuk komunikasi, dan jasa pelayanan keuangan.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;"><b>PIHAK KEDUA</b> berhak untuk mendapatkan honorarium petugas dari <b>PIHAK PERTAMA</b> sebesar Rp <?= number_format($petugas['bruto'], 0, ',', '.'); ?> (<?= terbilang($petugas['bruto'], 2); ?> rupiah), sudah termasuk biaya pajak, bea materai, pulsa dan kuota internet untuk komunikasi, dan jasa pelayanan keuangan.</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(2).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Selain mendapatkan honorarium sebagaimana dimaksud pada ayat (1), PIHAK KEDUA berhak mendapatkan asuransi petugas dari PIHAK PERTAMA.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Selain mendapatkan honorarium sebagaimana dimaksud pada ayat (1), <b>PIHAK KEDUA</b> berhak mendapatkan asuransi petugas dari <b>PIHAK PERTAMA</b>.</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(3).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">PIHAK KEDUA tidak diberikan honorarium tambahan apabila melakukan kunjungan diluar jadwal pelaksanaan pekerjaan lapangan.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;"><b>PIHAK KEDUA</b> tidak diberikan honorarium tambahan apabila melakukan kunjungan diluar jadwal pelaksanaan pekerjaan lapangan.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -238,7 +226,7 @@
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">Pembayaran honorarium sebagaimana dimaksud dalam pasal 5 dilakukan setelah PIHAK KEDUA menyelesaikan dan menyerahkan seluruh hasil pekerjaan sebagaimana dimaksud dalam pasal 2 kepada PIHAK PERTAMA.</td>
+            <td style="width:100%; text-align:justify;font-size:11px;">Pembayaran honorarium sebagaimana dimaksud dalam pasal 5 dilakukan setelah <b>PIHAK KEDUA</b> menyelesaikan dan menyerahkan seluruh hasil pekerjaan sebagaimana dimaksud dalam pasal 2 kepada <b>PIHAK PERTAMA</b>.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -249,13 +237,13 @@
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(1).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Penyerahan seluruh hasil pekerjaan lapangan sebagaimana dimaksud dalam pasal 2 dilaksanakan oleh PIHAK KEDUA kepada PIHAK PERTAMA yang dinyatakan dalam berita acara serah terima hasil pekerjaan dan ditandatangani oleh PARA PIHAK, paling lambat pada tanggal <?= $sk['lama']; ?>.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Penyerahan seluruh hasil pekerjaan lapangan sebagaimana dimaksud dalam pasal 2 dilaksanakan oleh <b>PIHAK KEDUA</b> kepada <b>PIHAK PERTAMA</b> yang dinyatakan dalam berita acara serah terima hasil pekerjaan dan ditandatangani oleh PARA PIHAK, paling lambat pada tanggal <?= $sk['lama']; ?>.</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(2).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila terdapat hambatan dalam penyerahan hasil pekerjaan sebagaimana dimaksud pada ayat (1), PIHAK PERTAMA dapat memberikan tambahan waktu penyerahan seluruh hasil pekerjaan lapangan paling lambat pada tanggal <?= tanggal($kegiatan['tgl_selesai']); ?>.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila terdapat hambatan dalam penyerahan hasil pekerjaan sebagaimana dimaksud pada ayat (1), <b>PIHAK PERTAMA</b> dapat memberikan tambahan waktu penyerahan seluruh hasil pekerjaan lapangan paling lambat pada tanggal <?= tanggal($kegiatan['tgl_selesai']); ?>.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -265,7 +253,7 @@
     </table>
     <table class="isi">
         <tr>
-            <td style="width:100%; text-align:justify;font-size:11px;">PIHAK PERTAMA dapat memutuskan perjanjian ini secara sepihak sewaktu-waktu dalam hal PIHAK KEDUA tidak dapat melaksanakan kewajibannya sebagaimana dimaksud dalam pasal 4, termasuk dalam kondisi terindikasi terinfeksi virus Covid-19 dengan menerbitkan Surat Pemutusan Perjanjian Kerja.</td>
+            <td style="width:100%; text-align:justify;font-size:11px;"><b>PIHAK PERTAMA</b> dapat memutuskan perjanjian ini secara sepihak sewaktu-waktu dalam hal <b>PIHAK KEDUA</b> tidak dapat melaksanakan kewajibannya sebagaimana dimaksud dalam pasal 4, termasuk dalam kondisi terindikasi terinfeksi virus Covid-19 dengan menerbitkan Surat Pemutusan Perjanjian Kerja.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -276,19 +264,19 @@
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(1).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila PIHAK KEDUA mengundurkan diri pada saat/setelah pelaksanaan pekerjaan lapangan dengan tidak menyelesaikan pekerjaan yang menjadi tanggungjawabnya maka wajib menyerahkan seluruh dokumen kegiatan yang diterima PIHAK KEDUA kepada PIHAK PERTAMA.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila <b>PIHAK KEDUA</b> mengundurkan diri pada saat/setelah pelaksanaan pekerjaan lapangan dengan tidak menyelesaikan pekerjaan yang menjadi tanggungjawabnya maka wajib menyerahkan seluruh dokumen kegiatan yang diterima <b>PIHAK KEDUA</b> kepada <b>PIHAK PERTAMA</b>.</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(2).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila PIHAK KEDUA meninggal dunia, mengundurkan diri karena sakit dengan keterangan rawat inap, terindikasi terinfeksi virus Covid-19 dengan keterangan pihak berwenang, kecelakaan dengan keterangan kepolisian, dan/atau telah diberikan Surat Pemutusan Perjanjian Kerja dari PIHAK PERTAMA.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Apabila <b>PIHAK KEDUA</b> meninggal dunia, mengundurkan diri karena sakit dengan keterangan rawat inap, terindikasi terinfeksi virus Covid-19 dengan keterangan pihak berwenang, kecelakaan dengan keterangan kepolisian, dan/atau telah diberikan Surat Pemutusan Perjanjian Kerja dari <b>PIHAK PERTAMA</b>.</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
         <tr>
             <td style="width:5%; text-align:left;font-size:11px;vertical-align:top;">(3).</td>
-            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Dalam hal terjadi peristiwa sebagaimana dimaksud dalam ayat (2), PIHAK PERTAMA membayarkan honorarium kepada PIHAK KEDUA secara proporsional sesuai pekerjaan yang telah dilaksanakan.</td>
+            <td style="width:95%; text-align:justify;font-size:11px;vertical-align:top;">Dalam hal terjadi peristiwa sebagaimana dimaksud dalam ayat (2), <b>PIHAK PERTAMA</b> membayarkan honorarium kepada <b>PIHAK KEDUA</b> secara proporsional sesuai pekerjaan yang telah dilaksanakan.</td>
         </tr>
     </table>
     <table class="header" style="margin-top: 5px;">
@@ -325,8 +313,8 @@
     </table>
     <table class="isi" style="margin-top:20px;">
         <tr>
-            <td style="width:50%; text-align:center;font-size:11px;"><b>PIHAK KEDUA</b></td>
-            <td style="width:50%; text-align:center;font-size:11px;"><b>PIHAK PERTAMA</b></td>
+            <td style="width:50%; text-align:center;font-size:11px;"><b><b>PIHAK KEDUA</b></b></td>
+            <td style="width:50%; text-align:center;font-size:11px;"><b><b>PIHAK PERTAMA</b></b></td>
         </tr>
     </table>
     <table class="isi" style="margin-top:80px;">

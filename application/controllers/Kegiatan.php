@@ -806,7 +806,8 @@ class Kegiatan extends CI_Controller
     $html2pdf = new Pdf('P', 'A4', 'en', false, 'UTF-8', array(20, 10, 20, 10));
     $html2pdf->pdf->SetTitle('SPK');
     $html2pdf->writeHTML($html);
-    $html2pdf->output('spk.pdf', 'D');
+    // $html2pdf->output('spk.pdf', 'D');
+    $html2pdf->output('spk.pdf');
   }
 
   public function st_cetak($kegiatan_id = null, $sk_id = null, $kelurahan_id = null, $id = null)
