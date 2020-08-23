@@ -131,7 +131,17 @@
 
     td.tabel_3 {
         text-align: left;
-        width: 50%;
+        width: 20%;
+        font-size: 11px;
+        vertical-align: middle;
+        border: 1px solid black;
+        height: 15px;
+        padding-left: 5px;
+    }
+
+    td.tabel_4 {
+        text-align: left;
+        width: 30%;
         font-size: 11px;
         vertical-align: middle;
         border: 1px solid black;
@@ -202,7 +212,7 @@
         <tr>
             <td class="isi_1">Menimbang</td>
             <td class="isi_2">:</td>
-            <td class="isi_3">bahwa untuk kelancaran pelaksanaan kegiatan Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?> Tahun 2020, perlu menetapkan Petugas Konsultasi Teknis Seksi IPDS di Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?> Tahun Anggaran <?= substr($sk['nomor'], strlen($sk['nomor']) - 4, 4); ?>;</td>
+            <td class="isi_3">bahwa untuk kelancaran pelaksanaan kegiatan Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?> Tahun 2020, perlu menetapkan <?= $kegiatan['nama']; ?> di Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?> Tahun Anggaran <?= substr($sk['nomor'], strlen($sk['nomor']) - 4, 4); ?>;</td>
         </tr>
     </table>
     <table class="isi">
@@ -291,17 +301,17 @@
         <tr>
             <td class="isi_1">KEDUA</td>
             <td class="isi_2">:</td>
-            <td class="isi_3"><?= $sk['nama']; ?> mempunyai tugas melakukan kegiatan konsultansi teknis dalam rangka persiapan dan pelaksanaan kegiatan Seksi IPDS di wilayah Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?>.</td>
+            <td class="isi_3"><?= $sk['nama']; ?> mempunyai tugas melakukan kegiatan <?= $kegiatan['jenis']; ?> sebagai <?= $kegiatan['nama']; ?> di wilayah Badan Pusat Statistik <?= substr($bps['nama'], 3, strlen($bps['nama']) - 3); ?>.</td>
         </tr>
     </table>
     <table class="isi">
         <tr>
             <td class="isi_1">KETIGA</td>
             <td class="isi_2">:</td>
-            <td class="isi_3">Kepada <?= $sk['nama']; ?> dapat diberikan uang harian atau honorarium sebesar Rp <?= number_format($sk['rate'], 0, ',', '.'); ?>,00 sesuai dengan jumlah yang dialokasikan.</td>
+            <td class="isi_3">Kepada <?= $sk['nama']; ?> dapat diberikan uang harian atau honorarium sebesar Rp <?= number_format($sk['rate'], 0, ',', '.'); ?>,00 sesuai dengan jumlah yang ditetapkan.</td>
         </tr>
     </table>
-    <table class="isi">
+    <table class="isi" style="padding-top: 70px;">
         <tr>
             <td class="isi_1">KEEMPAT</td>
             <td class="isi_2">:</td>
@@ -374,16 +384,24 @@
     </table>
     <table class="tabel">
         <tr>
-            <td class="tabel_1">No</td>
-            <td class="tabel_2">Nama</td>
-            <td class="tabel_3">Jabatan</td>
+            <td class="tabel_1">NO</td>
+            <td class="tabel_2" style="text-align: center;">NAMA</td>
+            <td class="tabel_3" style="text-align: center;">GOLONGAN</td>
+            <td class="tabel_4" style="text-align: center;">KELURAHAN</td>
+        </tr>
+        <tr>
+            <td class="tabel_1" style="height: 2px;">(1)</td>
+            <td class="tabel_2" style="text-align: center; height: 2px;">(2)</td>
+            <td class="tabel_3" style="text-align: center; height: 2px;">(3</td>
+            <td class="tabel_4" style="text-align: center; height: 2px;">(4)</td>
         </tr>
         <?php $no = 0;
         foreach ($petugas as $r) : $no++; ?>
             <tr>
                 <td class="tabel_1"><?= $no; ?></td>
                 <td class="tabel_2"><?= $r['nama']; ?></td>
-                <td class="tabel_3"><?= $r['jabatan']; ?></td>
+                <td class="tabel_3"><?= $r['gol']; ?></td>
+                <td class="tabel_4"><?= $r['nama_desa']; ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

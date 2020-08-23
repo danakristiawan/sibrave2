@@ -415,8 +415,10 @@ class Kegiatan extends CI_Controller
     if (!isset($kegiatan_id)) redirect('auth/blocked');
     if (!isset($id)) redirect('auth/blocked');
     // query
+    $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
     $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
-    $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $id])->result_array();
+    // $data['petugas'] = $this->db->get_where('data_petugas', ['kegiatan_id' => $kegiatan_id, 'sk_id' => $id])->result_array();
+    $data['petugas'] = $this->db->query("SELECT a.*,b.nama_desa FROM data_petugas a LEFT JOIN data_kelurahan b ON a.kelurahan_id=b.id WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$id'")->result_array();
     $kdbps = getBps()['kdbps'];
     $data['bps'] = $this->db->get_where('ref_bps', ['kode' => $kdbps])->row_array();
     $data['jabatan'] = $this->db->get_where('ref_jabatan', ['kdbps' => $kdbps, 'kode' => '01'])->row_array();
