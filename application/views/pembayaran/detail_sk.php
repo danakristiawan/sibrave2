@@ -30,7 +30,7 @@
                       <td><?= date('d-m-Y', $r['tanggal']); ?></td>
                       <td><?= $r['nama']; ?></td>
                       <?php
-                      $query = $this->db->query("SELECT sk_id,COUNT(nik) as petugas,SUM(bruto) as jumlah FROM view_pembayaran WHERE kegiatan_id='$kegiatan_id' AND sk_id='$sk_id'")->row_array();
+                      $query = $this->db->query("SELECT sk_id,COUNT(nik) as petugas,SUM(bruto) as jumlah FROM data_petugas WHERE kegiatan_id='$kegiatan_id' AND sk_id='$sk_id' AND target<=capaian")->row_array();
                       ?>
                       <td class="text-right"><?= number_format($query['petugas'], 0, ',', '.'); ?></td>
                       <td class="text-right"><?= number_format($query['jumlah'], 0, ',', '.'); ?></td>
