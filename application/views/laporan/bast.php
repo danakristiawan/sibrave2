@@ -121,7 +121,7 @@
             <td class="head"><b>BERITA ACARA SERAH TERIMA</b></td>
         </tr>
         <tr>
-            <td class="head"><b>KEGIATAN <?= strtoupper($kegiatan['nama']) ?></b></td>
+            <td class="head"><b><?= strtoupper($kegiatan['nama']) ?></b></td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
