@@ -116,7 +116,7 @@
         <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Menimbang</td>
             <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Bahwa dalam rangka <?= $kegiatan['nama']; ?> maka dipandang perlu melakukan <?= $kegiatan['jenis']; ?> kegiatan tersebut;</td>
+            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Bahwa dalam rangka <?= $kegiatan['jenis'] . ' oleh ' . $kegiatan['nama']; ?> maka dipandang perlu melakukan <?= $kegiatan['jenis']; ?> kegiatan tersebut;</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
@@ -184,7 +184,7 @@
         <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Untuk</td>
             <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Melaksanakan kegiatan <?= $kegiatan['jenis']; ?> dalam rangka <?= $kegiatan['nama']; ?></td>
+            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Melaksanakan kegiatan <?= $kegiatan['jenis']; ?> sebagai <?= $kegiatan['nama']; ?></td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
@@ -214,7 +214,7 @@
     <table class="isi" style="margin-top: 60px;">
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
-            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= $jabatan['nama_peg']; ?></b></td>
+            <td style="width:35%; text-align:center;font-size:11px;" colspan="3"><b><?= strtoupper($jabatan['nama_peg']); ?></b></td>
         </tr>
         <tr>
             <td style="width:65%; text-align:left;font-size:11px;"></td>
