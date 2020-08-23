@@ -116,7 +116,7 @@
         <tr>
             <td style="width:20%; text-align:left;font-size:11px;vertical-align:top;">Menimbang</td>
             <td style="width:1%; text-align:left;font-size:11px;vertical-align:top;">:</td>
-            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Bahwa dalam rangka Kegiatan <?= $kegiatan['nama']; ?> maka dipandang perlu melakukan <?= $kegiatan['jenis']; ?> kegiatan tersebut;</td>
+            <td style="width:79%; text-align:left;font-size:11px;vertical-align:top;">Bahwa dalam rangka <?= $kegiatan['nama']; ?> maka dipandang perlu melakukan <?= $kegiatan['jenis']; ?> kegiatan tersebut;</td>
         </tr>
     </table>
     <table class="isi" style="margin-top: 5px;">
