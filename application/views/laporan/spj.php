@@ -140,7 +140,7 @@
 
     td.tabel_4 {
         text-align: right;
-        width: 5%;
+        width: 7%;
         font-size: 11px;
         vertical-align: middle;
         border: 1px solid black;
@@ -150,7 +150,7 @@
 
     td.tabel_5 {
         text-align: right;
-        width: 10%;
+        width: 11%;
         font-size: 11px;
         vertical-align: middle;
         border: 1px solid black;
@@ -190,7 +190,7 @@
 
     td.tabel_9 {
         text-align: left;
-        width: 30%;
+        width: 27%;
         font-size: 11px;
         vertical-align: bottom;
         border: 1px solid black;
@@ -264,26 +264,37 @@
             <td class="tabel_1" style="text-align: center;">No</td>
             <td class="tabel_2" style="text-align: center;">Nama</td>
             <td class="tabel_3" style="text-align: center;">Gol</td>
-            <td class="tabel_4" style="text-align: center;">Dok</td>
-            <td class="tabel_5" style="text-align: center;">Honor per Dok (Rp)</td>
+            <td class="tabel_4" style="text-align: center;">Target</td>
+            <td class="tabel_5" style="text-align: center;">Honor per Target (Rp)</td>
             <td class="tabel_6" style="text-align: center;">Jumlah Kotor (Rp)</td>
             <td class="tabel_7" style="text-align: center;">PPh</td>
             <td class="tabel_8" style="text-align: center;">Jumlah Bersih (Rp)</td>
             <td class="tabel_9" style="text-align: center; vertical-align:middle;">TTD</td>
         </tr>
-        <?php $no = 1;
+        <tr>
+            <td class="tabel_1" style="text-align: center; height:3px;">(1)</td>
+            <td class="tabel_2" style="text-align: center; height:3px;">(2)</td>
+            <td class="tabel_3" style="text-align: center; height:3px;">(3)</td>
+            <td class="tabel_4" style="text-align: center; height:3px;">(4)</td>
+            <td class="tabel_5" style="text-align: center; height:3px;">(5)</td>
+            <td class="tabel_6" style="text-align: center; height:3px;">(6)</td>
+            <td class="tabel_7" style="text-align: center; height:3px;">(7)</td>
+            <td class="tabel_8" style="text-align: center; height:3px;">(8)</td>
+            <td class="tabel_9" style="text-align: center; height:3px; vertical-align:middle;">(9)</td>
+        </tr>
+        <?php $no = 0;
         $jml = 0;
-        foreach ($spj as $r) : ?>
+        foreach ($spj as $r) : $no++; ?>
             <tr>
-                <td class="tabel_1"><?= $no++; ?></td>
+                <td class="tabel_1"><?= $no; ?></td>
                 <td class="tabel_2"><?= $r['nama']; ?></td>
                 <td class="tabel_3"><?= $r['gol']; ?></td>
-                <td class="tabel_4"><?= number_format($r['target'], 0, ',', '.'); ?></td>
+                <td class="tabel_4"><?= $sk['jenis_rate'] == 'Lumpsum' ? '-' : number_format($r['target'], 0, ',', '.'); ?></td>
                 <td class="tabel_5"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
                 <td class="tabel_6"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
                 <td class="tabel_7">0</td>
                 <td class="tabel_8"><?= number_format($r['bruto'], 0, ',', '.'); ?></td>
-                <td class="tabel_9" style="text-align: <?= $no % 2 == 0 ? 'left' : 'right'; ?>;"><?= $no % 2 == 0 ? '....................' : ''; ?><?= $no % 2 == 0 ? '' : '....................'; ?></td>
+                <td class="tabel_9" style="text-align: <?= $no % 2 == 0 ? 'right' : 'left'; ?>;"><?= $no % 2 == 0 ? $no . '....................' : ''; ?><?= $no % 2 == 0 ? '' : $no . '....................'; ?></td>
             </tr>
         <?php $jml += $r['bruto'];
         endforeach; ?>
