@@ -108,7 +108,7 @@
     </page_footer>
     <table class="header">
         <tr>
-            <td class="head"><b>PERJANJIAN KERJA PETUGAS KEGIATAN</b></td>
+            <td class="head"><b>PERJANJIAN KERJA</b></td>
         </tr>
         <tr>
             <td class="head"><b><?= strtoupper($kegiatan['nama']); ?></b></td>
