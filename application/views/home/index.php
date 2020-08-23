@@ -8,7 +8,7 @@
           <span class="info-box-icon bg-info elevation-1"><i class="fa fa-tasks"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">Jumlah Kegiatan</span>
-            <span class="info-box-number">4</span>
+            <span class="info-box-number">0</span>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
           <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-gear"></i></span>
           <div class="info-box-content">
             <span class="info-box-text">Sedang Berjalan</span>
-            <span class="info-box-number">2</span>
+            <span class="info-box-number">0</span>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Selesai</span>
-            <span class="info-box-number">1</span>
+            <span class="info-box-number">0</span>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
           <div class="info-box-content">
             <span class="info-box-text">Pembayaran</span>
-            <span class="info-box-number">1</span>
+            <span class="info-box-number">0</span>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
       <div class="col-lg-8">
         <div class="card card-gray">
           <div class="card-header">
-            <h5 class="card-title"><i class="fa fa-bar-chart"></i> Grafik Kegiatan per Bulan</h5>
+            <h5 class="card-title"><i class="fa fa-bar-chart"></i> Grafik Kegiatan</h5>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
@@ -84,11 +84,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Sensus Penduduk</td>
-                    <td>100</td>
-                    <td>25</td>
-                  </tr>
+                  <?php foreach ($petugas as $r) : ?>
+                    <tr>
+                      <td><?= $r['nama_kegiatan']; ?></td>
+                      <td><?= $r['target']; ?></td>
+                      <td><?= $r['capaian']; ?></td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -115,16 +117,18 @@
                 <thead>
                   <tr>
                     <th>Kegiatan</th>
-                    <th>Target</th>
-                    <th>Capaian</th>
+                    <th>SPK</th>
+                    <th>ST</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Sensus Penduduk</td>
-                    <td>100</td>
-                    <td>25</td>
-                  </tr>
+                  <?php foreach ($petugas as $r) : ?>
+                    <tr>
+                      <td><?= $r['nama_kegiatan']; ?></td>
+                      <td><?= 'Nomor ' . $r['no_urut'] . $r['no_spk'] . ' tanggal ' . tanggal($r['tgl_spk']); ?></td>
+                      <td><?= 'Nomor ' . $r['no_urut'] . $r['no_st'] . ' tanggal ' . tanggal($r['tgl_st']); ?></td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
@@ -146,16 +150,26 @@
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th>Kegiatan</th>
-                    <th>Target</th>
-                    <th>Capaian</th>
+                    <th>Jenis</th>
+                    <th>Uraian</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Sensus Penduduk</td>
-                    <td>100</td>
-                    <td>25</td>
+                    <td>Tempat, Tgl Lahir</td>
+                    <td><?= $referensi['tempat_lhr'] . ', ' . tanggal($referensi['tgl_lhr']); ?></td>
+                  </tr>
+                  <tr>
+                    <td>Alamat</td>
+                    <td><?= $referensi['jalan'] . ' Rt. ' . $referensi['rt'] . ' Rw. ' . $referensi['rw'] . ', Kel. ' . $referensi['kel'] . ', Kec. ' . $referensi['kec'] . ', Kab/Kota ' . $referensi['kota'] . ', Provinsi ' . $referensi['prov']; ?></td>
+                  </tr>
+                  <tr>
+                    <td>No HP</td>
+                    <td><?= $referensi['nohp']; ?></td>
+                  </tr>
+                  <tr>
+                    <td>Rekening</td>
+                    <td><?= $referensi['rekening'] . ' pada Bank ' . $referensi['rekening'] . ' atas nama ' . $referensi['nama_rek']; ?></td>
                   </tr>
                 </tbody>
               </table>
