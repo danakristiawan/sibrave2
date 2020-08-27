@@ -6,6 +6,7 @@
           <div class="card-header">
             <span class="text-lg"><i class="fa fa-folder-o"></i> &nbsp;Daftar Petugas</span>
             <a href="<?= base_url('petugas/add'); ?>" class="btn btn-sm btn-primary float-right" data-toggle="tooltip" data-placement="bottom" title="Tambah"><i class="fa fa-plus"></i></a>
+            <a href="<?= base_url('petugas/excel'); ?>" class="btn btn-sm btn-outline-success float-right mr-2"><i class="fa fa-file-excel-o"></i> &nbsp;Export</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">

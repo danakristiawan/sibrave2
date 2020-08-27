@@ -23,6 +23,14 @@ class Petugas extends CI_Controller
     $this->load->view('template/footer');
   }
 
+  public function excel()
+  {
+    // data
+    $data['petugas'] = $this->db->get('ref_petugas')->result_array();
+    // form
+    $this->load->view('ref_petugas/excel', $data);
+  }
+
   public function add()
   {
     //providing data
