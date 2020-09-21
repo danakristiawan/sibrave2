@@ -46,7 +46,7 @@
                           <i class="fa fa-calendar"></i>
                         </span>
                       </div>
-                      <input class="form-control <?= form_error('tgl_lhr') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_lhr" value="<?= $petugas['tgl_lhr']; ?>">
+                      <input class="form-control <?= form_error('tgl_lhr') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_lhr" value="<?= date('d-m-Y', $petugas['tgl_lhr']); ?>">
                       <div class="invalid-feedback">
                         <?= form_error('tgl_lhr') ?>
                       </div>

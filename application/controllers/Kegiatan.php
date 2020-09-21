@@ -212,6 +212,19 @@ class Kegiatan extends CI_Controller
     $this->load->view('template/footer');
   }
 
+  public function sk_excel($kegiatan_id = null, $id = null)
+  {
+    // cek id
+    if (!isset($kegiatan_id)) redirect('auth/blocked');
+    if (!isset($id)) redirect('auth/blocked');
+    // query
+    $data['kegiatan'] = $this->db->get_where('data_kegiatan', ['id' => $kegiatan_id])->row_array();
+    $data['sk'] = $this->db->get_where('data_sk', ['id' => $id])->row_array();
+    $data['petugas'] = $this->db->query("SELECT a.nik AS nik_petugas,b.nama_desa,c.* FROM data_petugas a LEFT JOIN data_kelurahan b ON a.kelurahan_id=b.id LEFT JOIN ref_petugas c ON a.nik=c.nik WHERE a.kegiatan_id='$kegiatan_id' AND a.sk_id='$id'")->result_array();
+    // form
+    $this->load->view('sk/excel', $data);
+  }
+
   public function sk_add($kegiatan_id = null)
   {
     // cek id

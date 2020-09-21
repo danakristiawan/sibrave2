@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/vnd-ms-excel");
-header("Content-Disposition: attachment; filename=Referensi_Petugas.xls");
+header("Content-Disposition: attachment; filename=Daftar_Petugas.xls");
 ?>
 
 <!DOCTYPE html>
@@ -9,12 +9,12 @@ header("Content-Disposition: attachment; filename=Referensi_Petugas.xls");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referensi Petugas</title>
+    <title>Daftar Petugas</title>
 </head>
 
 <body>
     <h3>
-        <center>Referensi Petugas<center>
+        <center>Daftar Petugas<center>
     </h3>
     <table border="1">
         <thead>

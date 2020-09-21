@@ -48,6 +48,7 @@
                       <td><?= date('d-m-Y', $r['tgl_st']); ?></td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-cetak/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="SK"><i class="fa fa-file-pdf-o"></i></a>
+                        <a href="<?= base_url('kegiatan/sk-excel/') . $kegiatan_id . '/' . $r['id']; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" title="Excel"><i class="fa fa-file-excel-o ml-2"></i></a>
                       </td>
                       <td>
                         <a href="<?= base_url('kegiatan/sk-edit/') . $kegiatan_id . '/' . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>
