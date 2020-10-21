@@ -124,6 +124,85 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="">Kode Pengolah :</label>
+                    <input type="text" name="kd_pengolah" class="form-control <?= form_error('kd_pengolah') ? 'is-invalid' : '' ?>" value="<?= $master['kd_pengolah']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('kd_pengolah') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="tgl_mulai">Tgl Mulai:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                      </div>
+                      <input class="form-control <?= form_error('tgl_mulai') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_mulai" value="<?= $master['tgl_mulai'] ? date('d-m-Y', $master['tgl_mulai']) : '' ?>">
+                      <div class="invalid-feedback">
+                        <?= form_error('tgl_mulai') ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="tgl_selesai">Tgl Selesai:</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                      </div>
+                      <input class="form-control <?= form_error('tgl_selesai') ? 'is-invalid' : '' ?>" data-date-format="dd-mm-yyyy" data-provide="datepicker" name="tgl_selesai" value="<?= $master['tgl_selesai'] ? date('d-m-Y', $master['tgl_selesai']) : ''; ?>">
+                      <div class="invalid-feedback">
+                        <?= form_error('tgl_selesai') ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">4a_rev :</label>
+                    <input type="text" name="4a_rev" class="form-control <?= form_error('4a_rev') ? 'is-invalid' : '' ?>" value="<?= $master['4a_rev']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('4a_rev') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">4b_rev :</label>
+                    <input type="text" name="4b_rev" class="form-control <?= form_error('4b_rev') ? 'is-invalid' : '' ?>" value="<?= $master['4b_rev']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('4b_rev') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">4c_rev :</label>
+                    <input type="text" name="4c_rev" class="form-control <?= form_error('4c_rev') ? 'is-invalid' : '' ?>" value="<?= $master['4c_rev']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('4c_rev') ?>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="">5_rev :</label>
+                    <input type="text" name="5_rev" class="form-control <?= form_error('5_rev') ? 'is-invalid' : '' ?>" value="<?= $master['5_rev']; ?>">
+                    <div class="invalid-feedback">
+                      <?= form_error('5_rev') ?>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             </div>

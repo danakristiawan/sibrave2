@@ -118,7 +118,43 @@ class Olah_cepat extends CI_Controller
         'field' => 'nm_ketuasls',
         'label' => 'nm_ketuasls',
         'rules' => 'required|trim'
+      ],
+      [
+        'field' => 'kd_pengolah',
+        'label' => 'kd_pengolah',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => 'tgl_mulai',
+        'label' => 'tgl_mulai',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => 'tgl_selesai',
+        'label' => 'tgl_selesai',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => '4a_rev',
+        'label' => '4a_rev',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => '4b_rev',
+        'label' => '4b_rev',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => '4c_rev',
+        'label' => '4c_rev',
+        'rules' => 'trim'
+      ],
+      [
+        'field' => '5_rev',
+        'label' => '5_rev',
+        'rules' => 'trim'
       ]
+
     ];
     $validation = $this->form_validation->set_rules($rules);
     if ($validation->run()) {
@@ -137,6 +173,13 @@ class Olah_cepat extends CI_Controller
         'jml_5' => htmlspecialchars($this->input->post('jml_5', true)),
         'nm_ketuasls' => htmlspecialchars($this->input->post('nm_ketuasls', true)),
         'nm_operator' => $nama,
+        'kd_pengolah' => htmlspecialchars($this->input->post('kd_pengolah', true)),
+        'tgl_mulai' => strtotime(htmlspecialchars($this->input->post('tgl_mulai', true))),
+        'tgl_selesai' => strtotime(htmlspecialchars($this->input->post('tgl_selesai', true))),
+        '4a_rev' => htmlspecialchars($this->input->post('4a_rev', true)),
+        '4b_rev' => htmlspecialchars($this->input->post('4b_rev', true)),
+        '4c_rev' => htmlspecialchars($this->input->post('4c_rev', true)),
+        '5_rev' => htmlspecialchars($this->input->post('5_rev', true)),
         'date_created' => time()
       ];
       $this->db->update('data_mfd', $data, ['id' => $id]);

@@ -27,6 +27,9 @@
                     <th>Jml 4c</th>
                     <th>Jml 5</th>
                     <th>Nama Ketua SLS</th>
+                    <th>Kode Pengolah</th>
+                    <th>Tgl Mulai</th>
+                    <th>Tgl Selesai</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -50,6 +53,9 @@
                       <td><?= $r['jml_4c']; ?></td>
                       <td><?= $r['jml_5']; ?></td>
                       <td><?= $r['nm_ketuasls']; ?></td>
+                      <td><?= $r['kd_pengolah']; ?></td>
+                      <td><?= $r['tgl_mulai'] ? date('d-m-Y', $r['tgl_mulai']) : ''; ?></td>
+                      <td><?= $r['tgl_selesai'] ? date('d-m-Y', $r['tgl_selesai']) : ''; ?></td>
                       <td>
                         <a href="<?= base_url('olah-cepat/edit/') . $kode . '/' . $r['id']; ?>" class="badge badge-success badge-sm"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Ubah"></i></a>
                       </td>
