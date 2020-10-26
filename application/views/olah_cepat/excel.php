@@ -45,6 +45,13 @@ header("Content-Disposition: attachment; filename=MFD_" . $kdbps . ".xls");
                 <th>jml_5</th>
                 <th>nm_ketuasls</th>
                 <th>nm_operator</th>
+                <th>Kode Pengolah</th>
+                <th>Tgl Mulai</th>
+                <th>Tgl Selesai</th>
+                <th>4a_rev</th>
+                <th>4b_rev</th>
+                <th>4c_rev</th>
+                <th>5_rev</th>
             </tr>
         </thead>
         <tbody>
@@ -79,6 +86,13 @@ header("Content-Disposition: attachment; filename=MFD_" . $kdbps . ".xls");
                     <td><?= $r['jml_5']; ?></td>
                     <td><?= $r['nm_ketuasls']; ?></td>
                     <td><?= $r['nm_operator']; ?></td>
+                    <td><?= $r['kd_pengolah']; ?></td>
+                    <td><?= $r['tgl_mulai'] ? date('d-m-Y', $r['tgl_mulai']) : ''; ?></td>
+                    <td><?= $r['tgl_selesai'] ? date('d-m-Y', $r['tgl_selesai']) : ''; ?></td>
+                    <td><?= $r['4a_rev']; ?></td>
+                    <td><?= $r['4b_rev']; ?></td>
+                    <td><?= $r['4c_rev']; ?></td>
+                    <td><?= $r['5_rev']; ?></td>
                 </tr>
             <?php
             endforeach; ?>
